@@ -1,0 +1,14 @@
+logs/*
+!.gitkeep
+node_modules/
+tmp
+.idea
+.DS_Store
+angular-phonecat-snapshots
+bower_components/
+*.dll
+/obj/Debug/mpp.njsproj.FileListAbsolute.txt
+*.map
+*.js
+/app/.bowerrc
+/.bowerrc

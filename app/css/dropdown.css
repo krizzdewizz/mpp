@@ -1,0 +1,99 @@
+﻿/* https://www.codementor.io/angularjs/tutorial/create-dropdown-control */
+dropdown {
+  float: left;
+  display: block;
+  width: 250px;
+}
+dropdown > div {
+  float: left;
+  width: 100%;
+}
+dropdown > div > div.dropdown-display {
+  float: left;
+  width: 100%;
+  background: white;
+  cursor: pointer;
+  border: solid 1px #dddddd;
+  box-sizing: border-box;
+}
+dropdown > div > div.dropdown-display > * {
+  float: left;
+  height: 100%;
+  line-height: 40px !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+dropdown > div > div.dropdown-display > span {
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding-right: 34px;
+  padding-left: 10px;
+  white-space:nowrap;
+}
+dropdown > div > div.dropdown-display > span.placeholder {
+  color: #aaaaaa;
+}
+dropdown > div > div.dropdown-display > i {
+  position: relative;
+  width: 14px;
+  margin-left: -24px;
+  padding-right: 10px;
+  text-align: right;
+}
+dropdown > div > div.dropdown-list {
+  float: left;
+  position: relative;
+  width: 100%;
+  transform: scale(1, 0);
+  transition: transform ease 100ms;
+}
+dropdown > div > div.dropdown-list > div {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  cursor: pointer;
+  background: white;
+}
+dropdown > div > div.dropdown-list > div > div {
+  float: left;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: solid 1px #dddddd;
+  border-top: none;
+}
+dropdown > div > div.dropdown-list > div > div:hover {
+  background: #F0F0F0;
+}
+dropdown > div > div.dropdown-list > div > div.selected {
+  background: #2875c7;
+  color: white;
+}
+dropdown > div > div.dropdown-list > div > div > * {
+  height: 40px;
+  line-height: 40px !important;
+  display: inline-block;
+  vertical-align: middle;
+}
+dropdown > div > div.dropdown-list > div > div > span {
+  float: left;
+  width: 100%;
+  position: relative;
+  padding-right: 30px;
+  box-sizing: border-box;
+  color: inherit;
+  white-space:nowrap;
+}
+dropdown > div > div.dropdown-list > div > div > i {
+  float: left;
+  width: 20px;
+  margin-left: -20px;
+  display: none;
+}
+dropdown > div > div.dropdown-list > div > div.selected > i {
+  display: inline-block;
+}
+dropdown > div.show > div.dropdown-list {
+  transform: scale(1, 1);
+}

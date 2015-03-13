@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html lang="en" ng-app="mppApp">
+<head>
+    <meta charset="utf-8">
+    <title>Musician's Practicing Player</title>
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="css/dropdown.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-controller="MainCtrl as ctrl">
+    <div id="main" ui-event="{ keydown: 'ctrl.keyDown($event)' }" tabindex="0">
+
+        <div style="display:inline-block">
+            <table>
+                <tr>
+                    <td>
+                        <div id="playerContainer" style="width:410px;height:250px">
+                            <youtube-video id="player" player-width="410" player-height="250" video-url="session.videoUrl" player="mppPlayer"></youtube-video>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="markers">
+                            <div ng-class="{activeMarker: ($index + 1 === ctrl.activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
+                                <span class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span>{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="keyStrokes">
+            <table>
+                <tr><td><span class="keyStroke">{{'SPACE'|xlate}}</span></td><td>{{'PLAY_PAUSE'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke">{{'RETURN'|xlate}}</span></td><td>{{'SEEK_TO_START'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke">←&nbsp;→</span></td><td>{{'BACKWARD_FORWARD'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke">m</span></td><td>{{'ADD_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke">1-0</span></td><td>{{'SEEK_TO_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke">{{'BACKSPACE'|xlate}}</span></td><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke">↑&nbsp;↓</span></td><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td></tr>
+            </table>
+        </div>
+
+        <div id="sessions">
+            <dropdown id="sessionsDropDown" list="sessions" selected="session" property="name"></dropdown>
+            <button class="addButton glyph" title="{{'ADD_SESSION'|xlate}}" ng-click="ctrl.addSession()"></button>
+            <button class="editButton glyph" title="{{'EDIT_SESSION'|xlate}}" ng-click="ctrl.editSession()"></button>
+            <button class="deleteButton glyph" title="{{'DELETE_SESSION'|xlate}}" ng-click="ctrl.deleteSession()"></button>
+        </div>
+
+        <div id="sessionDialog" title="">
+            <form>
+                <fieldset>
+                    <input autofocus placeholder="{{'NAME'|xlate}}" ng-model="editingSession.name" type="text" class="text ui-widget-content">
+                    <br>
+                    <input placeholder="{{'YT_URL'|xlate}}" id="sessionDialogVideoUrl" ng-model="editingSession.videoUrl" type="text" class="text ui-widget-content"><a style="padding-left:5px;font-size:smaller" id="sessionDialogSearchYT" href="https://www.youtube.com/" target="_blank">{{'SEARCH_YT'|xlate}}</a>
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-utils/ui-utils.min.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/dropdown.js"></script>
+    <script src="scripts/filter.js"></script>
+    <script src="scripts/session-service.js"></script>
+    <script src="scripts/main-ctrl.js"></script>
+    <script src="scripts/session-dialog.js"></script>
+    <script src="scripts/app.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

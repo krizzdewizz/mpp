@@ -1,0 +1,201 @@
+body {
+    padding: 5px;
+}
+
+body, input, select, button {
+    font-size: 18pt;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+td {
+    white-space: nowrap;
+}
+
+#main {
+    outline: 0;
+    position: absolute;
+    height: 95%;
+    width: 95%;
+}
+
+    #main table td {
+        vertical-align: top;
+    }
+
+#markers {
+    position: absolute;
+    display: inline;
+    padding-left: 40px;
+}
+
+.marker {
+    cursor: pointer;
+    padding: 2px;
+}
+
+.deleteMarkerButton {
+    position: relative;
+    top: -1px;
+    left:5px;
+    width: 16px;
+    height: 16px;
+    background: url('../img/minus.png') no-repeat center;
+}
+
+.glyph {
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+    .glyph:hover {
+        background-color: LightPink;
+    }
+
+.addButton {
+    background: url('../img/plus.png') no-repeat center;
+}
+
+.editButton {
+    background: url('../img/edit.png') no-repeat center;
+}
+
+.deleteButton {
+    background: url('../img/minus.png') no-repeat center;
+}
+
+.marker .deleteMarkerButton {
+    visibility: hidden;
+}
+
+.marker:hover .deleteMarkerButton {
+    visibility: visible;
+}
+
+.activeMarker {
+    background-color: cadetblue;
+}
+
+.marker span {
+    display: inline-block;
+    width: 40px;
+}
+
+.marker:hover {
+    background-color: LightPink;
+}
+
+.title {
+    font-size: larger;
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+    width: 100%;
+}
+
+.keyStroke {
+    color: blue;
+}
+
+#keyStrokes {
+    display: inline-flex;
+    float: right;
+}
+
+.keysDisabled {
+    opacity: 0.4;
+}
+
+#keyStrokes td {
+    padding-right: 10px;
+    font-size: smaller;
+}
+
+#sessions {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+    #sessions select {
+        min-width: 200px;
+    }
+
+#debug {
+    display: none;
+}
+
+#sessionDialog {
+    display:none;
+}
+#sessionDialog input {
+    width: 100%;
+}
+
+.ui-dialog-titlebar {
+    background-color: #333333;
+    color:white;
+    padding: 5px;
+}
+
+.ui-dialog {
+    background-color: white;
+    border: 1px solid gray;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+}
+
+fieldset {
+    margin: 0px;
+    padding: 20px;
+    border: none;
+}
+
+.ui-dialog-buttonset {
+    float: right;
+    padding: 5px;
+    padding-right: 7px;
+}
+
+    .ui-dialog-buttonset button {
+        margin-left: 5px;
+    }
+
+.ui-dialog-buttonpane {
+    height: 55px;
+    padding:5px;
+    padding-right:10px;
+}
+
+.ui-dialog-titlebar-close {
+    display: none;
+}
+
+input {
+    padding: 6px;
+}
+
+button {
+    height: 42px;
+}
+
+label, input {
+    display: block;
+}
+
+#sessionDialog {
+    padding-right: 14px;
+}
+
+#sessionsDropDown {
+    margin-right: 5px;
+    margin-left:2px;
+}
+
+#playerContainer {
+    border:solid 1px #dddddd;
+}
+
+.angleDown {
+    font-size:x-small;
+    color:lightgray;
+}

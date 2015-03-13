@@ -1,0 +1,23 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "name": "angular-mpp",
+  "description": "Musician's Practicing Player",
+  "repository": "https://github.com/krizzdewizz/angular-mpp",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "",
+    "grunt": "",
+    "grunt-contrib-clean": "",
+    "grunt-contrib-copy": "",
+    "grunt-typescript": "",
+    "http-server": "",
+    "typescript": "",
+
+    "grunt-usemin": "",
+    "grunt-contrib-concat": ""
+  },
+  "scripts": {
+    "start": "http-server -a 0.0.0.0 -p 8000"
+  }
+}

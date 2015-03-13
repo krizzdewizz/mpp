@@ -1,0 +1,17 @@
+{
+  "name": "angular-mpp",
+  "description": "Musician's Practicing Player",
+  "version": "0.0.0",
+  "homepage": "https://github.com/krizzdewizz/angular-mpp",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.3.x",
+    "angular-mocks": "1.3.x",
+    "jquery": "2.1.1",
+    "angular-youtube-mb": "1.0.0",
+    "angular-ui-utils": "0.2.2",
+    "jquery-ui": "1.11.3",
+    "angular-local-storage": "0.1.5"
+  }
+}
