@@ -34,9 +34,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app\images\edit.png" />
-    <Content Include="app\images\minus.png" />
-    <Content Include="app\images\plus.png" />
+    <Content Include="app\images\sprites.png" />
     <Content Include="app\index.html" />
     <Content Include="app\partials\dropdown.html" />
     <Content Include="app\partials\main.html" />
