@@ -51,8 +51,7 @@ module.exports = function (grunt) {
             dist: {
                 src: [
                     'dist/scripts/{,*/}*.js',
-                    'dist/styles/{,*/}*.css',
-                    'dist/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                    'dist/styles/{,*/}*.css'
                 ]
             }
         },
@@ -129,8 +128,8 @@ module.exports = function (grunt) {
         sprite: {
             all: {
                 src: 'app_images/*.png',
-                dest: 'app/images/all.png',
-                destCss: 'app/styles/all.css'
+                dest: 'app/images/sprites.png',
+                destCss: 'app/styles/sprites.css'
             }
         }
     });
