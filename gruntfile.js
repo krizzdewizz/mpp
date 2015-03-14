@@ -124,8 +124,16 @@ module.exports = function (grunt) {
         //            }]
         //    }
         //},
+        
+        // run this task whenever a new image is added to the app
+        sprite: {
+            all: {
+                src: 'app_images/*.png',
+                dest: 'app/images/all.png',
+                destCss: 'app/styles/all.css'
+            }
+        }
     });
-    
     
     grunt.registerTask('default', [
         'clean',
