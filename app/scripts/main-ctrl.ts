@@ -205,6 +205,7 @@
                 isAdd: false,
                 onAddOrOk: () => {
                     angular.copy(self.scope.editingSession, self.scope.session);
+                    self.sessionService.saveSessions();
                     self.scope.links = self.getLinks();
                     self.scope.$apply();
                 },
@@ -216,6 +217,7 @@
 
         deleteSession(): void {
             this.setSession(this.sessionService.remove(this.scope.session));
+            this.sessionService.saveSessions();
             setTimeout(() => this.scope.$apply(), 100);
         }
 
