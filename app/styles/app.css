@@ -2,7 +2,7 @@ body {
     padding: 5px;
 }
 
-body, input, select, button {
+body, input, button {
     font-size: 18pt;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -116,10 +116,6 @@ td {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-
-    #sessions select {
-        min-width: 200px;
-    }
 
 #debug {
     display: none;
