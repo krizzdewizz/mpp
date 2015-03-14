@@ -4,6 +4,7 @@ node_modules/
 .tmp
 .idea
 .DS_Store
+dist
 angular-phonecat-snapshots
 bower_components/
 *.dll
