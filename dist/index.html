@@ -4,14 +4,16 @@
     <meta charset="utf-8">
     <title>Musician's Practicing Player</title>
 
-    <link rel="stylesheet" href="styles/main.ce3b763f.css">
+    <link rel="stylesheet" href="styles/styles.07dceb5e.css">
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="scripts/vendor.e5e83e65.js"></script>
-    <script src="scripts/scripts.7af5aadc.js"></script>
+    <script src="scripts/scripts.119aa99f.js"></script>
 </head>
 
 <body ng-controller="MainCtrl as ctrl">
+
+
     <div id="main" ui-event="{ keydown: 'ctrl.keyDown($event)' }" tabindex="0">
 
         <div style="display:inline-block">
@@ -25,7 +27,7 @@
                     <td>
                         <div id="markers">
                             <div ng-class="{activeMarker: ($index + 1 === ctrl.activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
-                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}" >{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
+                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
                             </div>
                         </div>
                     </td>
@@ -47,9 +49,9 @@
 
         <div id="sessions">
             <dropdown id="sessionsDropDown" list="sessions" selected="session" property="name"></dropdown>
-            <button class="addButton glyph" title="{{'ADD_SESSION'|xlate}}" ng-click="ctrl.addSession()"></button>
-            <button class="editButton glyph" title="{{'EDIT_SESSION'|xlate}}" ng-click="ctrl.editSession()"></button>
-            <button class="deleteButton glyph" title="{{'DELETE_SESSION'|xlate}}" ng-click="ctrl.deleteSession()"></button>
+            <button class="glyph" title="{{'ADD_SESSION'|xlate}}" ng-click="ctrl.addSession()"><div class="icon-plus "></div></button>
+            <button class="glyph" title="{{'EDIT_SESSION'|xlate}}" ng-click="ctrl.editSession()"><div class="icon-edit"></div></button>
+            <button class="glyph" title="{{'DELETE_SESSION'|xlate}}" ng-click="ctrl.deleteSession()"><div class="icon-minus"></div></button>
         </div>
 
         <div id="sessionDialog" title="">
