@@ -203,25 +203,23 @@
             console.log(`cc=${kc}`);
             var ZERO = 48;
             var NINE = 57;
+            var ZERO_NUMPAD = 96;
+            var NINE_NUMPAD = 105;
             var handled = false;
-            if (kc >= ZERO && kc <= NINE) { // 1-0
-                var markerNumber = kc === ZERO ? 10 : (kc - ZERO);
+            var numPadNum = kc >= ZERO_NUMPAD && kc <= NINE_NUMPAD;
+            if (kc >= ZERO && kc <= NINE || numPadNum) {
+                var numOff = numPadNum ? ZERO_NUMPAD : ZERO;
+                var markerNumber = kc === ZERO || kc === ZERO_NUMPAD ? 10 : (kc - numOff);
                 this.seek(markerNumber);
                 handled = true;
             } else if (kc === 32) { // space
                 this.playPause();
                 handled = true;
-            } else if (kc === 77) { // m
+            } else if (kc === 77 || kc === 65) { // m or a
                 this.addMarker();
                 handled = true;
             } else if (kc === 13) { // return
                 this.seekToStart();
-                handled = true;
-            } else if (kc === 65) { // a
-                this.addSession();
-                handled = true;
-            } else if (kc === 69) { // e
-                this.editSession();
                 handled = true;
             } else if (kc === 37 || kc === 39) { // left or right
                 this.backwardForward(kc === 37);

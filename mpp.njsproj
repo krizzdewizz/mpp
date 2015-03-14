@@ -40,7 +40,6 @@
     <Content Include="app\index.html" />
     <Content Include="app\partials\dropdown.html" />
     <Content Include="app\partials\main.html" />
-    <Content Include="app\styles\.gitkeep" />
     <Content Include="app\styles\app.css" />
     <Content Include="app\styles\dropdown.css" />
     <Content Include="bower.json" />
@@ -54,6 +53,7 @@
     <TypeScriptCompile Include="app\scripts\session-dialog.ts" />
     <TypeScriptCompile Include="app\scripts\typings\angular.d.ts" />
     <TypeScriptCompile Include="app\scripts\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="app\scripts\xlate-filter.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />

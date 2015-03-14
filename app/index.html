@@ -21,6 +21,7 @@
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/dropdown.js"></script>
     <script src="scripts/filter.js"></script>
+    <script src="scripts/xlate-filter.js"></script>
     <script src="scripts/session-service.js"></script>
     <script src="scripts/main-ctrl.js"></script>
     <script src="scripts/session-dialog.js"></script>
@@ -42,7 +43,7 @@
                     <td>
                         <div id="markers">
                             <div ng-class="{activeMarker: ($index + 1 === ctrl.activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
-                                <span class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span>{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
+                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}" >{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
                             </div>
                         </div>
                     </td>

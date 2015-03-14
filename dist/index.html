@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <title>Musician's Practicing Player</title>
 
-    <link rel="stylesheet" href="styles/main.12725366.css">
+    <link rel="stylesheet" href="styles/main.ce3b763f.css">
 
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="scripts/vendor.e5e83e65.js"></script>
-    <script src="scripts/scripts.bee981f2.js"></script>
+    <script src="scripts/scripts.7af5aadc.js"></script>
 </head>
 
 <body ng-controller="MainCtrl as ctrl">
@@ -25,7 +25,7 @@
                     <td>
                         <div id="markers">
                             <div ng-class="{activeMarker: ($index + 1 === ctrl.activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
-                                <span class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span>{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
+                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}" >{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
                             </div>
                         </div>
                     </td>
