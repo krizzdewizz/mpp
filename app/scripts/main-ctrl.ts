@@ -199,6 +199,11 @@
         }
 
         keyDown(e: JQueryEventObject): void {
+
+            if (e.altKey || e.ctrlKey || e.shiftKey) {
+                return;
+            }
+
             var kc = e.keyCode;
             console.log(`cc=${kc}`);
             var ZERO = 48;
