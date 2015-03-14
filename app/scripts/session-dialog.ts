@@ -50,10 +50,6 @@ module mpp.dialog.session {
                     self.close();
                 }
             });
-
-            $('#sessionDialogSearchYT').click(() => {
-                $('#sessionDialogVideoUrl').focus();
-            });
         }
 
         private isValid(): boolean {

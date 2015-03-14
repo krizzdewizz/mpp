@@ -37,7 +37,6 @@
     <Content Include="app\images\sprites.png" />
     <Content Include="app\index.html" />
     <Content Include="app\partials\dropdown.html" />
-    <Content Include="app\partials\main.html" />
     <Content Include="app\styles\app.css" />
     <Content Include="app\styles\dropdown.css" />
     <Content Include="app\styles\sprites.css" />
@@ -46,6 +45,7 @@
     <Content Include="package.json" />
     <Content Include="README.md" />
     <TypeScriptCompile Include="app\scripts\dropdown.ts" />
+    <TypeScriptCompile Include="app\scripts\keys.ts" />
     <TypeScriptCompile Include="app\scripts\main-ctrl.ts" />
     <TypeScriptCompile Include="app\scripts\filter.ts" />
     <TypeScriptCompile Include="app\scripts\session-service.ts" />

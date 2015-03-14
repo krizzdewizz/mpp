@@ -24,6 +24,9 @@ module mpp {
     export interface Session {
         name: string;
         videoUrl: string;
+        lyricsUrl?: string;
+        tabsUrl?: string;
+        links?: string;
         markers: number[];
         isPlaceholder?: boolean;
     }

@@ -24,6 +24,7 @@
     <script src="scripts/filter.js"></script>
     <script src="scripts/xlate-filter.js"></script>
     <script src="scripts/session-service.js"></script>
+    <script src="scripts/keys.js"></script>
     <script src="scripts/main-ctrl.js"></script>
     <script src="scripts/session-dialog.js"></script>
     <script src="scripts/app.js"></script>
@@ -31,7 +32,6 @@
 </head>
 
 <body ng-controller="MainCtrl as ctrl">
-
 
     <div id="main" ui-event="{ keydown: 'ctrl.keyDown($event)' }" tabindex="0">
 
@@ -73,18 +73,31 @@
             <button class="glyph" title="{{'DELETE_SESSION'|xlate}}" ng-click="ctrl.deleteSession()"><div class="icon-minus"></div></button>
         </div>
 
+        <div id="links">
+            <a ng-if="session.lyricsUrl" href="{{session.lyricsUrl}}" target="_blank">{{'LYRICS'|xlate}}</a>
+            <a ng-if="session.tabsUrl" href="{{session.tabsUrl}} target="_blank">{{'TABS'|xlate}}</a>
+            <div ng-repeat="link in links">
+                <a href="{{link.url}}" target="_blank">{{link.title}}</a>
+            </div>
+        </div>
+
         <div id="sessionDialog" title="">
             <form>
                 <fieldset>
                     <input autofocus placeholder="{{'NAME'|xlate}}" ng-model="editingSession.name" type="text" class="text ui-widget-content">
                     <br>
-                    <input placeholder="{{'YT_URL'|xlate}}" id="sessionDialogVideoUrl" ng-model="editingSession.videoUrl" type="text" class="text ui-widget-content"><a style="padding-left:5px;font-size:smaller" id="sessionDialogSearchYT" href="https://www.youtube.com/" target="_blank">{{'SEARCH_YT'|xlate}}</a>
+                    <input placeholder="{{'YT_URL'|xlate}}" id="sessionDialogVideoUrl" ng-model="editingSession.videoUrl" type="text" class="text ui-widget-content">
+                    <br>
+                    <input placeholder="{{'LYRICS_URL'|xlate}}" ng-model="editingSession.lyricsUrl" type="text" class="text ui-widget-content">
+                    <br>
+                    <input placeholder="{{'TABS_URL'|xlate}}" ng-model="editingSession.tabsUrl" type="text" class="text ui-widget-content">
+                    <br>
+                    <input placeholder="{{'MORE_LINKS'|xlate}}" ng-model="editingSession.links" type="text" class="text ui-widget-content">
+                    <span style="font-size:small;float:right">format: [title1=]url1[MPP[title2=]url2]...</span>
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
                 </fieldset>
             </form>
         </div>
     </div>
-
-
 </body>
 </html>

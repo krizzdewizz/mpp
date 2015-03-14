@@ -1,6 +1,4 @@
-﻿
-
-module mpp.filter {
+﻿module mpp.filter {
 
     export module marker {
         export function filter(secs: number): string {
@@ -12,7 +10,6 @@ module mpp.filter {
             return m + ':' + s;
         }
     }
-
 
     export function register(app: ng.IModule): void {
         app.filter('xlate',() => {

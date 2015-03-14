@@ -37,15 +37,18 @@ module mpp.service.session {
             }
 
             //this.sessions = [{
-            //    name: 'Prodigy',
-            //    videoUrl: 'https://www.youtube.com/watch?v=xB_nKpEkILs',
-            //    markers: [22, 30, 2 * 60],
-            //    value:1
+            //    name: 'Queensryche',
+            //    videoUrl: 'https://www.youtube.com/watch?v=3M_ITDg8hIw',
+            //    markers: [1, 2, 3, 4, 5, 6, 67, 8, 9, 354, 36, 78, 23, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+            //    value: 2,
+            //    lyricsUrl: 'http://www.azlyrics.com/lyrics/queensryche/london.html',
+            //    tabsUrl: 'https://www.jellynote.com/en/sheet-music-tabs/queensryche/walk-in-the-shadows/504a0e8cd2235a3ff94a9cb3#tabs:%23score_A',
+            //    links: 'more tabs=http://www.guitartabs.cc/MPPmore lyrics=http://www.azlyrics.com/lyrics/nsync/pop.html'
             //}, {
-            //        name: 'Queensryche',
-            //        videoUrl: 'https://www.youtube.com/watch?v=3M_ITDg8hIw',
-            //        markers: [1, 2, 3, 4, 5, 6, 67, 8, 9, 354, 36, 78, 33],
-            //        value: 2
+            //        name: 'Prodigy',
+            //        videoUrl: 'https://www.youtube.com/watch?v=xB_nKpEkILs',
+            //        markers: [22, 30, 2 * 60],
+            //        value: 1
             //    }, {
             //        name: 'Godfather',
             //        videoUrl: 'https://www.youtube.com?v=_PXC7tOmRds',

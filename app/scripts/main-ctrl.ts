@@ -1,6 +1,10 @@
 ﻿module mpp.controller.main {
 
     var AUTO_FOCUS_TIMEOUT = 1000;
+    interface Link {
+        title: string;
+        url: string;
+    }
 
     interface Scope extends ng.IScope {
         session: Session;
@@ -8,57 +12,69 @@
         mppPlayer: mpp.Player; // see index.html
         playPause();
         ctrl: MainCtrl;
-        currentTime: string;
         editingSession: Session;
+        links: Link[];
     }
 
-    class MainCtrl {
+    function incrTime(time: number, backward: boolean): number {
+        var amount = 1; // 1sec
+        if (backward) {
+            amount *= -1;
+        }
+        return Math.max(0, time + amount);
+    }
+
+    export class MainCtrl {
 
         activeMarkerNumber: number;
 
-        constructor(private scope: Scope, private $interval: ng.IIntervalService, $timeout: ng.ITimeoutService, private sessionService: service.session.SessionService) {
+        constructor(private scope: Scope, $timeout: ng.ITimeoutService, private sessionService: service.session.SessionService) {
 
             this.scope.sessions = sessionService.sessions;
-            this.scope.session = sessionService.lastSession;
-
-            this.scope.$watch('session',() => {
-                this.onSessionChanged();
-            });
+            this.setSession(sessionService.lastSession);
 
             this.scope.$on('placeholderClicked',() => {
                 this.addSession();
+            });
+            scope.$watch('$viewContentLoaded', function () {
+                $('#main').focus();
+            });
+            scope.$watch('session',() => {
+                this.onSessionChanged();
             });
 
             // WTF??
             scope.ctrl = this;
 
-            var autoFocus;
+            this.installAutoFocus($timeout);
+        }
 
-            $('#main').bind('focus', ev=> {
+        private installAutoFocus($timeout: ng.ITimeoutService): void {
+            var autoFocus;
+            $('#main').bind('focus', e=> {
                 if (autoFocus) {
                     $timeout.cancel(autoFocus);
                     autoFocus = undefined;
                 }
                 $('#keyStrokes').removeClass('keysDisabled');
-            }).bind('blur', ev=> {
+            }).bind('blur', e=> {
                 $('#keyStrokes').addClass('keysDisabled');
                 if (autoFocus) {
                     $timeout.cancel(autoFocus);
-                    autoFocus = undefined;
                 }
-                autoFocus = $timeout(() => {
-                    $('#main').focus();
-                }, AUTO_FOCUS_TIMEOUT);
-            });
-
-            scope.$watch('$viewContentLoaded', function () {
-                $('#main').focus();
+                autoFocus = $timeout(() => $('#main').focus(), AUTO_FOCUS_TIMEOUT);
             });
         }
 
         private onSessionChanged(): void {
             this.activeMarkerNumber = undefined;
+            this.scope.links = this.getLinks();
             this.sessionService.setSessionSelected(this.scope.session);
+        }
+
+        private setSession(sess: Session): void {
+            this.scope.session = sess;
+            this.scope.links = this.getLinks();
         }
 
         private get player(): mpp.Player {
@@ -67,7 +83,6 @@
 
         stop(): void {
             this.player.stopVideo();
-            this.scope.currentTime = '';
         }
 
         playPause(): void {
@@ -99,11 +114,7 @@
         }
 
         backwardForward(backward: boolean): void {
-            var amount = 1; // 1sec
-            if (backward) {
-                amount *= -1;
-            }
-            this.player.seekTo(this.player.getCurrentTime() + amount, true);
+            this.player.seekTo(incrTime(this.player.getCurrentTime(), backward), true);
         }
 
         seekToActiveMarker(): void {
@@ -113,33 +124,29 @@
         }
 
         moveActiveMarker(backward: boolean): void {
-            if (this.activeMarkerNumber) {
-                var marker = this.getMarkerValue(this.activeMarkerNumber);
-                var amount = 1; // 1sec
-                if (backward) {
-                    amount *= -1;
-                }
-                var newMarker = marker + amount;
-                if (this.scope.session.markers.indexOf(newMarker) < 0) {
-                    this.setMarkerValue(this.activeMarkerNumber, newMarker);
-                    this.seek(this.activeMarkerNumber);
-                    this.scope.$apply();
-                }
+            if (!this.activeMarkerNumber) {
+                return;
             }
+            var marker = this.getMarkerValue(this.activeMarkerNumber);
+            var newMarker = incrTime(marker, backward);
+            if (!this.markerExists(newMarker)) {
+                this.setMarkerValue(this.activeMarkerNumber, newMarker);
+                this.seek(this.activeMarkerNumber);
+                this.scope.$apply();
+            }
+        }
+
+        private markerExists(time: number): boolean {
+            var timeStr = filter.marker.filter(time);
+            return this.scope.session.markers.filter(it => timeStr === filter.marker.filter(it)).length > 0;
         }
 
         addMarker(): void {
             var time = this.player.getCurrentTime();
-            if (time === 0) {
+            if (time === 0 || this.markerExists(time)) {
                 return;
             }
 
-            var timeStr = filter.marker.filter(time);
-            var self = this;
-            var exists = this.scope.session.markers.filter(it => timeStr === filter.marker.filter(it)).length > 0;
-            if (exists) {
-                return;
-            }
             var arr = this.scope.session.markers.slice(0);
             arr.push(time);
             arr = arr.sort((m1, m2) => m1 < m2 ? -1 : 1);
@@ -152,16 +159,29 @@
             this.sessionService.saveSessions();
         }
 
-        addSession(): void {
+        private getLinks(): Link[] {
+            if (!this.scope.session) {
+                return [];
+            }
+            var links = this.scope.session.links;
+            if (!links) {
+                return [];
+            }
+            return links.split(/MPP/).map(it => {
+                var splits = it.split(/=/);
+                return { title: splits[0], url: splits.length > 1 ? splits[1] : splits[0] };
+            });
+        }
 
+        addSession(): void {
             this.scope.editingSession = { name: '', videoUrl: '', markers: [] };
             var self = this;
             dialog.session.open({
                 scope: self.scope,
                 isAdd: true,
                 onAddOrOk: () => {
-                    this.sessionService.add(self.scope.editingSession);
-                    self.scope.session = self.scope.editingSession;
+                    self.sessionService.add(self.scope.editingSession);
+                    self.setSession(self.scope.editingSession);
                     self.scope.$apply();
                 },
                 onClose: () => {
@@ -185,6 +205,7 @@
                 isAdd: false,
                 onAddOrOk: () => {
                     angular.copy(self.scope.editingSession, self.scope.session);
+                    self.scope.links = self.getLinks();
                     self.scope.$apply();
                 },
                 onClose: () => {
@@ -194,56 +215,19 @@
         }
 
         deleteSession(): void {
-            this.scope.session = this.sessionService.remove(this.scope.session);
+            this.setSession(this.sessionService.remove(this.scope.session));
             setTimeout(() => this.scope.$apply(), 100);
         }
 
         keyDown(e: JQueryEventObject): void {
-
-            if (e.altKey || e.ctrlKey || e.shiftKey) {
-                return;
-            }
-
-            var kc = e.keyCode;
-            console.log(`cc=${kc}`);
-            var ZERO = 48;
-            var NINE = 57;
-            var ZERO_NUMPAD = 96;
-            var NINE_NUMPAD = 105;
-            var handled = false;
-            var numPadNum = kc >= ZERO_NUMPAD && kc <= NINE_NUMPAD;
-            if (kc >= ZERO && kc <= NINE || numPadNum) {
-                var numOff = numPadNum ? ZERO_NUMPAD : ZERO;
-                var markerNumber = kc === ZERO || kc === ZERO_NUMPAD ? 10 : (kc - numOff);
-                this.seek(markerNumber);
-                handled = true;
-            } else if (kc === 32) { // space
-                this.playPause();
-                handled = true;
-            } else if (kc === 77 || kc === 65) { // m or a
-                this.addMarker();
-                handled = true;
-            } else if (kc === 13) { // return
-                this.seekToStart();
-                handled = true;
-            } else if (kc === 37 || kc === 39) { // left or right
-                this.backwardForward(kc === 37);
-                handled = true;
-            } else if (kc === 8) { // backspace
-                this.seekToActiveMarker();
-                handled = true;
-            } else if (kc === 38 || kc === 40) { // up or down
-                this.moveActiveMarker(kc === 38);
-                handled = true;
-            }
-            if (handled) {
+            if (keys.handle(this, e)) {
                 e.preventDefault();
             }
         }
     }
 
     export function register(app: ng.IModule): void {
-        app.controller('MainCtrl', ['$scope', '$interval', '$timeout', 'SessionService', ($scope, $interval, $timeout, SessionService) => new MainCtrl($scope, $interval, $timeout, SessionService)]);
+        app.controller('MainCtrl', ['$scope', '$timeout', 'SessionService', ($scope, $timeout, SessionService) => new MainCtrl($scope, $timeout, SessionService)]);
     }
 
 }

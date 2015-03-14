@@ -25,6 +25,11 @@
         YT_URL: 'YouTube video url',
         SEARCH_YT: 'search on YouTube',
         SESSION: 'session',
+        LYRICS_URL: 'lyrics url',
+        TABS_URL: 'tabs url',
+        LYRICS: 'lyrics',
+        TABS: 'tabs',
+        MORE_LINKS: 'more links'
     };
 
     var GERMAN = {
@@ -50,6 +55,11 @@
         YT_URL: 'youtube video url',
         SEARCH_YT: 'auf youtube suchen',
         SESSION: 'session',
+        LYRICS_URL: 'liedtext url',
+        TABS_URL: 'noten url',
+        LYRICS: 'liedtext',
+        TABS: 'noten',
+        MORE_LINKS:'mehr links'
     };
 
     // end data
