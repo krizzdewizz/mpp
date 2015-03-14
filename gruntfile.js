@@ -1,15 +1,13 @@
 var path = require('path');
 var fs = require('fs');
 
-var targetFolder = 'app/dist';
-
 module.exports = function (grunt) {
     
+    require('load-grunt-tasks')(grunt);
+    
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        
         clean: {
-            clean: '.tmp',
+            clean: ['.tmp', 'dist'],
             options: {
                 'no-write': false
             }
@@ -17,46 +15,51 @@ module.exports = function (grunt) {
         
         copy: {
             main: {
-                files: [
-                    { expand: true, src: ['README.md', 'LICENSE'], dest: targetFolder },
-                    { expand: true, flatten: true, src: ['build/*'], dest: targetFolder },
-                    { expand: true, cwd: 'scripts', src: ['follow-redirects/**'], dest: path.join(targetFolder, 'lib') },
-                ],
-            },
+                files: [{
+                        expand: true,
+                        cwd: 'app',
+                        dest: '.tmp',
+                        src: [
+                            '**/*', '!**/*.js*',
+                        ]
+                    }, {
+                        expand: true,
+                        cwd: 'app',
+                        dest: 'dist',
+                        src: [
+                            '**/*', '!scripts/**', '!styles/**'
+                        ]
+                    }]
+            }
         },
         
         typescript: {
             base: {
-                src: 'app/scripts/*.ts',
-                dest: '.tmp/tsc',
+                src: '.tmp/**/*.ts',
                 options: {
                     module: 'commonjs',
                     target: 'es5',
-                    basePath: 'app/scripts',
                     declaration: false,
                     references: [
-                        'app/scripts/**/*.d.ts'
+                        '.tmp/scripts/**/*.d.ts'
                     ]
                 }
             }
         },
-        
-        removeDevDeps: {
-            src: ['.', targetFolder],
-        },
-        
-        // qqqq
-        concat: {
+       
+        filerev: {
             dist: {
-                src: ['.tmp/tsc/**/*.js'],
-                dest: '.tmp/concat/js/app.js',
-            },
+                src: [
+                    'dist/scripts/{,*/}*.js',
+                    'dist/styles/{,*/}*.css',
+                    'dist/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+                ]
+            }
         },
-
         useminPrepare: {
             html: 'app/index.html',
             options: {
-                dest: 'app/dist',
+                dest: 'dist',
                 flow: {
                     html: {
                         steps: {
@@ -68,36 +71,74 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-        //uglify: {
-        //    generated: {
-        //        dest: 'dist/js/app.js',
-        //        src: ['.tmp/concat/js/app.js']
+        usemin: {
+            html: ['dist/{,*/}*.html'],
+            css: ['dist/styles/{,*/}*.css'],
+            options: {
+                assetsDirs: [
+                    'dist',
+                    'dist/images',
+                    'dist/styles'
+                ]
+            }
+        },
+        
+        ngAnnotate: {
+            dist: {
+                files: [{
+                        expand: true,
+                        cwd: '.tmp/concat/scripts',
+                        src: '*.js',
+                        dest: '.tmp/concat/scripts'
+                    }]
+            }
+        },
+        autoprefixer: {
+            options: {
+                browsers: ['last 1 version']
+            },
+            
+            dist: {
+                files: [{
+                        expand: true,
+                        cwd: '.tmp/styles/',
+                        src: '{,*/}*.css',
+                        dest: '.tmp/styles/'
+                    }]
+            }
+        }, 
+        //htmlmin: {
+        //    dist: {
+        //        options: {
+        //            collapseWhitespace: true,
+        //            conservativeCollapse: true,
+        //            collapseBooleanAttributes: true,
+        //            removeCommentsFromCDATA: true,
+        //            removeOptionalTags: true
+        //        },
+        //        files: [{
+        //                expand: true,
+        //                cwd: 'dist',
+        //                src: ['*.html', 'partials/{,*/}*.html'],
+        //                dest: 'dist'
+        //            }]
         //    }
-        //}
+        //},
     });
     
-    // qq
     
-    
-    grunt.loadNpmTasks('grunt-typescript');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-concat');
-    //grunt.loadNpmTasks('grunt-cssmin');
-    grunt.loadNpmTasks('grunt-uglify');
-    //grunt.loadNpmTasks('grunt-filerev');
-    grunt.loadNpmTasks('grunt-usemin');
-    
-    grunt.registerTask('build', [
+    grunt.registerTask('default', [
+        'clean',
+        'copy',
+        'typescript',
         'useminPrepare',
+        'autoprefixer',
         'concat',
-        //'cssmin:generated',
-        //'uglify:generated',
-        //'filerev',
-        'usemin'
+        'ngAnnotate',
+        'cssmin',
+        'uglify',
+        'filerev',
+        'usemin',
+        //'htmlmin' // has some bugs still
     ]);
-    
-    grunt.registerTask('default', ['clean', 'typescript', 'concat']);
-
 };

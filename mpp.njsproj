@@ -34,16 +34,19 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app\css\app.css" />
-    <Content Include="app\css\dropdown.css" />
+    <Content Include="app\images\edit.png" />
+    <Content Include="app\images\minus.png" />
+    <Content Include="app\images\plus.png" />
     <Content Include="app\index.html" />
     <Content Include="app\partials\dropdown.html" />
     <Content Include="app\partials\main.html" />
+    <Content Include="app\styles\.gitkeep" />
+    <Content Include="app\styles\app.css" />
+    <Content Include="app\styles\dropdown.css" />
     <Content Include="bower.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="shit.json" />
     <TypeScriptCompile Include="app\scripts\dropdown.ts" />
     <TypeScriptCompile Include="app\scripts\main-ctrl.ts" />
     <TypeScriptCompile Include="app\scripts\filter.ts" />
@@ -51,17 +54,14 @@
     <TypeScriptCompile Include="app\scripts\session-dialog.ts" />
     <TypeScriptCompile Include="app\scripts\typings\angular.d.ts" />
     <TypeScriptCompile Include="app\scripts\typings\jquery.d.ts" />
-    <TypeScriptCompile Include="scripts\typings\node\node.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
-    <Folder Include="app\css\" />
+    <Folder Include="app\images\" />
     <Folder Include="app\partials\" />
     <Folder Include="app\scripts\" />
     <Folder Include="app\scripts\typings\" />
-    <Folder Include="scripts\" />
-    <Folder Include="scripts\typings\" />
-    <Folder Include="scripts\typings\node\" />
+    <Folder Include="app\styles\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\scripts\app.ts" />

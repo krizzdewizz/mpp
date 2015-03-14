@@ -4,9 +4,27 @@
     <meta charset="utf-8">
     <title>Musician's Practicing Player</title>
 
-    <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="css/dropdown.css">
-    <link rel="stylesheet" href="css/app.css">
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/dropdown.css">
+    <link rel="stylesheet" href="styles/app.css">
+    <!-- endbuild -->
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <!-- build:js scripts/vendor.js -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-utils/ui-utils.min.js"></script>
+    <script src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="../bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
+    <script src="../jquery_custom/external/jquery/jquery.js"></script>
+    <script src="../jquery_custom/jquery-ui.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/dropdown.js"></script>
+    <script src="scripts/filter.js"></script>
+    <script src="scripts/session-service.js"></script>
+    <script src="scripts/main-ctrl.js"></script>
+    <script src="scripts/session-dialog.js"></script>
+    <script src="scripts/app.js"></script>
     <!-- endbuild -->
 </head>
 
@@ -63,23 +81,6 @@
         </div>
     </div>
 
-    <!-- build:js scripts/vendor.js -->
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-ui-utils/ui-utils.min.js"></script>
-    <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
-    <script src="bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
-    <!-- endbuild -->
 
-    <!-- build:js scripts/scripts.js -->
-    <script src="scripts/dropdown.js"></script>
-    <script src="scripts/filter.js"></script>
-    <script src="scripts/session-service.js"></script>
-    <script src="scripts/main-ctrl.js"></script>
-    <script src="scripts/session-dialog.js"></script>
-    <script src="scripts/app.js"></script>
-    <!-- endbuild -->
 </body>
 </html>

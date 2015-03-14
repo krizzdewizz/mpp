@@ -39,7 +39,7 @@ td {
     left:5px;
     width: 16px;
     height: 16px;
-    background: url('../img/minus.png') no-repeat center;
+    background: url('../images/minus.png') no-repeat center;
 }
 
 .glyph {
@@ -53,15 +53,15 @@ td {
     }
 
 .addButton {
-    background: url('../img/plus.png') no-repeat center;
+    background: url('../images/plus.png') no-repeat center;
 }
 
 .editButton {
-    background: url('../img/edit.png') no-repeat center;
+    background: url('../images/edit.png') no-repeat center;
 }
 
 .deleteButton {
-    background: url('../img/minus.png') no-repeat center;
+    background: url('../images/minus.png') no-repeat center;
 }
 
 .marker .deleteMarkerButton {
