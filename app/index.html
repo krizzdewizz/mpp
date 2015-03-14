@@ -45,8 +45,8 @@
                     </td>
                     <td>
                         <div id="markers">
-                            <div ng-class="{activeMarker: ($index + 1 === ctrl.activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
-                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton icon-minus" ng-click="ctrl.deleteMarker($index)"></span>
+                            <div ng-class="{activeMarker: ($index + 1 === activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
+                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>&nbsp;<span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton icon-minus" ng-click="ctrl.deleteMarker($index)"></span>
                             </div>
                         </div>
                     </td>

@@ -9,6 +9,7 @@
     interface Scope extends ng.IScope {
         session: Session;
         sessions: Session[];
+        activeMarkerNumber: number;
         mppPlayer: mpp.Player; // see index.html
         ctrl: MainCtrl;
         editingSession: Session;
@@ -24,8 +25,6 @@
     }
 
     export class MainCtrl {
-
-        activeMarkerNumber: number;
 
         constructor(private scope: Scope, $timeout: ng.ITimeoutService, private sessionService: service.session.SessionService) {
 
@@ -66,7 +65,7 @@
         }
 
         private onSessionChanged(): void {
-            this.activeMarkerNumber = undefined;
+            this.scope.activeMarkerNumber = undefined;
             this.scope.links = this.getLinks();
             this.sessionService.setSessionSelected(this.scope.session);
         }
@@ -104,7 +103,7 @@
             var marker = this.getMarkerValue(markerNumber);
             if (marker !== undefined) {
                 this.player.seekTo(marker, true);
-                this.activeMarkerNumber = markerNumber;
+                this.scope.activeMarkerNumber = markerNumber;
             }
         }
 
@@ -117,20 +116,20 @@
         }
 
         seekToActiveMarker(): void {
-            if (this.activeMarkerNumber) {
-                this.seek(this.activeMarkerNumber);
+            if (this.scope.activeMarkerNumber) {
+                this.seek(this.scope.activeMarkerNumber);
             }
         }
 
         moveActiveMarker(backward: boolean): void {
-            if (!this.activeMarkerNumber) {
+            if (!this.scope.activeMarkerNumber) {
                 return;
             }
-            var marker = this.getMarkerValue(this.activeMarkerNumber);
+            var marker = this.getMarkerValue(this.scope.activeMarkerNumber);
             var newMarker = incrTime(marker, backward);
             if (!this.markerExists(newMarker)) {
-                this.setMarkerValue(this.activeMarkerNumber, newMarker);
-                this.seek(this.activeMarkerNumber);
+                this.setMarkerValue(this.scope.activeMarkerNumber, newMarker);
+                this.seek(this.scope.activeMarkerNumber);
                 this.scope.$apply();
             }
         }
@@ -150,6 +149,7 @@
             arr.push(time);
             arr = arr.sort((m1, m2) => m1 < m2 ? -1 : 1);
             this.scope.session.markers = arr;
+            this.scope.activeMarkerNumber = arr.indexOf(time) + 1;
             this.sessionService.saveSessions();
         }
 
