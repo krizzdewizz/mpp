@@ -42,6 +42,7 @@
     <Content Include="app\partials\main.html" />
     <Content Include="app\styles\app.css" />
     <Content Include="app\styles\dropdown.css" />
+    <Content Include="app\styles\sprites.css" />
     <Content Include="bower.json" />
     <Content Include="LICENSE" />
     <Content Include="package.json" />
