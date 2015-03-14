@@ -35,11 +35,9 @@ td {
 
 .deleteMarkerButton {
     position: relative;
-    top: -1px;
+    top: -6px;
     left: -2px;
-    width: 16px;
-    height: 16px;
-    background: url('../images/minus.png') no-repeat center;
+    cursor:pointer;
 }
 
 .glyph {
@@ -47,6 +45,7 @@ td {
     width: 42px;
     height: 42px;
     background-color: white;
+    cursor:pointer;
 }
 
     .glyph div {
@@ -95,11 +94,13 @@ td {
 
 .keyStroke {
     color: blue;
+    cursor:pointer;
 }
 
 #keyStrokes {
     display: inline-flex;
     float: right;
+    font-size:smaller;
 }
 
 .keysDisabled {

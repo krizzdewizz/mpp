@@ -10,7 +10,6 @@
         session: Session;
         sessions: Session[];
         mppPlayer: mpp.Player; // see index.html
-        playPause();
         ctrl: MainCtrl;
         editingSession: Session;
         links: Link[];

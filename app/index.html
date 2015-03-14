@@ -46,7 +46,7 @@
                     <td>
                         <div id="markers">
                             <div ng-class="{activeMarker: ($index + 1 === ctrl.activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
-                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton" ng-click="ctrl.deleteMarker($index)"></span>
+                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>  <span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton icon-minus" ng-click="ctrl.deleteMarker($index)"></span>
                             </div>
                         </div>
                     </td>
@@ -56,13 +56,13 @@
 
         <div id="keyStrokes">
             <table>
-                <tr><td><span class="keyStroke">{{'SPACE'|xlate}}</span></td><td>{{'PLAY_PAUSE'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke">{{'RETURN'|xlate}}</span></td><td>{{'SEEK_TO_START'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke">←&nbsp;→</span></td><td>{{'BACKWARD_FORWARD'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke">m</span></td><td>{{'ADD_MARKER'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke">1-0</span></td><td>{{'SEEK_TO_MARKER'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke">{{'BACKSPACE'|xlate}}</span></td><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke">↑&nbsp;↓</span></td><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" ng-click="ctrl.playPause()">{{'SPACE'|xlate}}</span></td><td>{{'PLAY_PAUSE'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" ng-click="ctrl.seekToStart()">{{'RETURN'|xlate}}</span></td><td>{{'SEEK_TO_START'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" ng-click="ctrl.backwardForward(true)">←&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.backwardForward(false)">&nbsp;→&nbsp;</span></td><td>{{'BACKWARD_FORWARD'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" ng-click="ctrl.addMarker()">m</span></td><td>{{'ADD_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" style="cursor:inherit">1-0</span></td><td>{{'SEEK_TO_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" ng-click="ctrl.seekToActiveMarker()">{{'BACKSPACE'|xlate}}</span></td><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td></tr>
+                <tr><td><span class="keyStroke" ng-click="ctrl.moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td></tr>
             </table>
         </div>
 
@@ -75,7 +75,7 @@
 
         <div id="links">
             <a ng-if="session.lyricsUrl" href="{{session.lyricsUrl}}" target="_blank">{{'LYRICS'|xlate}}</a>
-            <a ng-if="session.tabsUrl" href="{{session.tabsUrl}} target="_blank">{{'TABS'|xlate}}</a>
+            <a ng-if="session.tabsUrl" href="{{session.tabsUrl}} target=" _blank">{{'TABS'|xlate}}</a>
             <div ng-repeat="link in links">
                 <a href="{{link.url}}" target="_blank">{{link.title}}</a>
             </div>
