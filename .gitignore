@@ -9,6 +9,6 @@ bower_components/
 *.dll
 /obj/Debug/mpp.njsproj.FileListAbsolute.txt
 *.map
-*.js
+#*.js
 /app/.bowerrc
 /.bowerrc
