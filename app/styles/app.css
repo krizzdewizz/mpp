@@ -149,6 +149,10 @@ fieldset {
     border: none;
 }
 
+.dropdown-display {
+	overflow:hidden;
+}
+
 .ui-dialog-buttonset {
     float: right;
     padding: 5px;
