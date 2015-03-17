@@ -39,6 +39,8 @@
     <Content Include="app\partials\dropdown.html" />
     <Content Include="app\styles\app.css" />
     <Content Include="app\styles\dropdown.css" />
+    <Content Include="app\styles\skeleton\normalize.css" />
+    <Content Include="app\styles\skeleton\skeleton.css" />
     <Content Include="app\styles\sprites.css" />
     <Content Include="bower.json" />
     <Content Include="LICENSE" />
@@ -61,6 +63,7 @@
     <Folder Include="app\scripts\" />
     <Folder Include="app\scripts\typings\" />
     <Folder Include="app\styles\" />
+    <Folder Include="app\styles\skeleton\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\scripts\app.ts" />

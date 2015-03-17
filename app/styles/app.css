@@ -1,10 +1,6 @@
 body {
-    padding: 5px;
-}
-
-body, input, button {
-    font-size: 18pt;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 3em;
+    overflow-y:hidden;
 }
 
 td {
@@ -13,49 +9,68 @@ td {
 
 #main {
     outline: 0;
-    position: absolute;
-    height: 95%;
-    width: 95%;
 }
 
-    #main table td {
-        vertical-align: top;
-    }
-
-#markers {
-    position: absolute;
-    display: inline;
-    padding-left: 40px;
+#playerContainer {
+    border: solid 1px #dddddd;
 }
+
+#contentRow {
+    padding-top: 2em;
+}
+
+.glyph {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.angleDown {
+    font-size: x-small;
+    color: lightgray;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#sessionsDropDown {
+    margin-right: 4px;
+    padding-left: 2px;
+    padding-right: 2px;
+    min-width: 30em;
+    max-width:60em;
+    font-size:larger;
+}
+
+/* keys */
+
+.keyStroke {
+    color: blue;
+    cursor: pointer;
+}
+
+#keyStrokes td {
+    padding-right: 10px;
+    font-size: smaller;
+}
+
+/* markers */
 
 .marker {
     cursor: pointer;
     padding: 2px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    white-space:nowrap;
 }
-
+.marker:hover {
+    border: 1px solid #d0d0d0;
+}
 .deleteMarkerButton {
     position: relative;
-    top: -6px;
-    left: -2px;
-    cursor:pointer;
+    top: 4px;
+    cursor: pointer;
 }
-
-.glyph {
-    border: none;
-    width: 42px;
-    height: 42px;
-    background-color: white;
-    cursor:pointer;
-}
-
-    .glyph div {
-        margin-left: 5px;
-    }
-
-    .glyph:hover {
-        background-color: LightPink;
-    }
-
 
 .marker .deleteMarkerButton {
     visibility: hidden;
@@ -74,83 +89,41 @@ td {
 }
 
     .marker span:nth-child(1) {
-        width: 20px;
+        width: 15px;
     }
 
     .marker span:nth-child(3) {
-        width: 80px;
+        width: 60px;
     }
 
-.marker:hover {
-    background-color: LightPink;
-}
 
-.title {
-    font-size: larger;
-    font-weight: bolder;
-    border-bottom: 1px solid black;
-    width: 100%;
-}
-
-.keyStroke {
-    color: blue;
-    cursor:pointer;
-}
-
-#keyStrokes {
-    display: inline-flex;
-    float: right;
-    font-size:smaller;
-}
-
-.keysDisabled {
-    opacity: 0.4;
-}
-
-#keyStrokes td {
-    padding-right: 10px;
-    font-size: smaller;
-}
-
-#sessions {
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-#debug {
-    display: none;
-}
-
+/* sessionDialog */
 #sessionDialog {
     display: none;
+    padding-right: 14px;
 }
 
-    #sessionDialog input {
-        width: 100%;
-    }
+#sessionDialog fieldset {
+    padding-top:1em;
+}
+#sessionDialog fieldset input {
+    width:100%;
+    margin-left:7px;
+}
 
 .ui-dialog-titlebar {
-    background-color: #333333;
-    color: white;
     padding: 5px;
+    letter-spacing:.1rem;
+    font-weight:600;
 }
 
 .ui-dialog {
     background-color: white;
     border: 1px solid gray;
-    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-}
-
-fieldset {
-    margin: 0px;
-    padding: 20px;
-    border: none;
-}
-
-.dropdown-display {
-	overflow:hidden;
+    border-radius: 4px;
+-webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 .ui-dialog-buttonset {
@@ -173,36 +146,15 @@ fieldset {
     display: none;
 }
 
-input {
-    padding: 6px;
-}
 
-button {
-    height: 42px;
-}
 
-label, input {
-    display: block;
+/* skeleton overrides */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    text-transform: initial;
+    text-align: initial;
 }
-
-#sessionDialog {
-    padding-right: 14px;
-}
-
-#sessionsDropDown {
-    margin-right: 5px;
-    margin-left: 2px;
-}
-
-#playerContainer {
-    border: solid 1px #dddddd;
-}
-
-.angleDown {
-    font-size: x-small;
-    color: lightgray;
-}
-
-.hidden {
-    visibility: hidden;
-}
+/* skeleton overrides */

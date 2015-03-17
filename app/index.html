@@ -7,6 +7,8 @@
     <!-- build:css styles/styles.css -->
     <link rel="stylesheet" href="styles/sprites.css">
     <link rel="stylesheet" href="styles/dropdown.css">
+    <link rel="stylesheet" href="styles/skeleton/normalize.css">
+    <link rel="stylesheet" href="styles/skeleton/skeleton.css">
     <link rel="stylesheet" href="styles/app.css">
     <!-- endbuild -->
 
@@ -33,55 +35,46 @@
 
 <body ng-controller="MainCtrl as ctrl">
 
-    <div id="main" ui-event="{ keydown: 'ctrl.keyDown($event)' }" tabindex="0">
+    <div class="container" id="main" ui-event="{ keydown: 'ctrl.keyDown($event)' }" tabindex="0">
 
-        <div style="display:inline-block">
-            <table>
-                <tr>
-                    <td>
-                        <div id="playerContainer" style="width:460px;height:270px">
-                            <youtube-video id="player" player-width="460" player-height="270" video-url="session.videoUrl" player="mppPlayer"></youtube-video>
-                        </div>
-                    </td>
-                    <td>
-                        <div id="markers">
-                            <div ng-class="{activeMarker: ($index + 1 === activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
-                                <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>&nbsp;<span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton icon-minus" ng-click="ctrl.deleteMarker($index)"></span>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="keyStrokes">
-            <table>
-                <tr><td><span class="keyStroke" ng-click="ctrl.playPause()">{{'SPACE'|xlate}}</span></td><td>{{'PLAY_PAUSE'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke" ng-click="ctrl.seekToStart()">{{'RETURN'|xlate}}</span></td><td>{{'SEEK_TO_START'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke" ng-click="ctrl.backwardForward(true)">←&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.backwardForward(false)">&nbsp;→&nbsp;</span></td><td>{{'BACKWARD_FORWARD'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke" ng-click="ctrl.addMarker()">m</span></td><td>{{'ADD_MARKER'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke" style="cursor:inherit">1-0</span></td><td>{{'SEEK_TO_MARKER'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke" ng-click="ctrl.seekToActiveMarker()">{{'BACKSPACE'|xlate}}</span></td><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td></tr>
-                <tr><td><span class="keyStroke" ng-click="ctrl.moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td></tr>
-            </table>
-        </div>
-
-        <div id="sessions">
-            <dropdown id="sessionsDropDown" list="sessions" selected="session" property="name"></dropdown>
-            <button class="glyph" title="{{'ADD_SESSION'|xlate}}" ng-click="ctrl.addSession()"><div class="icon-plus "></div></button>
-            <button class="glyph" title="{{'EDIT_SESSION'|xlate}}" ng-click="ctrl.editSession()"><div class="icon-edit"></div></button>
-            <button class="glyph" title="{{'DELETE_SESSION'|xlate}}" ng-click="ctrl.deleteSession()"><div class="icon-minus"></div></button>
-        </div>
-
-        <div id="links">
-            <a ng-if="session.lyricsUrl" href="{{session.lyricsUrl}}" target="_blank">{{'LYRICS'|xlate}}</a>
-            <a ng-if="session.tabsUrl" href="{{session.tabsUrl}} target=" _blank">{{'TABS'|xlate}}</a>
-            <div ng-repeat="link in links">
-                <a href="{{link.url}}" target="_blank">{{link.title}}</a>
+        <div class="row">
+            <div class="twelve columns">
+                <div id="sessions">
+                    <dropdown id="sessionsDropDown" list="sessions" selected="session" property="name" class="button"></dropdown>
+                    <button class="glyph" title="{{'ADD_SESSION'|xlate}}" ng-click="ctrl.addSession()"><div class="icon-plus "></div></button>
+                    <button class="glyph" title="{{'EDIT_SESSION'|xlate}}" ng-click="ctrl.editSession()"><div class="icon-edit"></div></button>
+                    <button class="glyph" title="{{'DELETE_SESSION'|xlate}}" ng-click="ctrl.deleteSession()"><div class="icon-minus"></div></button>
+                </div>
             </div>
         </div>
 
-        <div id="sessionDialog" title="">
+        <div id="contentRow" class="row">
+
+            <div class="four columns" id="keyStrokes">
+                <table>
+                    <tr><td><span class="keyStroke" ng-click="ctrl.playPause()">{{'SPACE'|xlate}}</span></td><td>{{'PLAY_PAUSE'|xlate}}</td></tr>
+                    <tr><td><span class="keyStroke" ng-click="ctrl.seekToStart()">{{'RETURN'|xlate}}</span></td><td>{{'SEEK_TO_START'|xlate}}</td></tr>
+                    <tr><td><span class="keyStroke" ng-click="ctrl.backwardForward(true)">←&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.backwardForward(false)">&nbsp;→&nbsp;</span></td><td>{{'BACKWARD_FORWARD'|xlate}}</td></tr>
+                    <tr><td><span class="keyStroke" ng-click="ctrl.addMarker()">m</span></td><td>{{'ADD_MARKER'|xlate}}</td></tr>
+                    <tr><td><span class="keyStroke" style="cursor:inherit">1-0</span></td><td>{{'SEEK_TO_MARKER'|xlate}}</td></tr>
+                    <tr><td><span class="keyStroke" ng-click="ctrl.seekToActiveMarker()">{{'BACKSPACE'|xlate}}</span></td><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td></tr>
+                    <tr><td><span class="keyStroke" ng-click="ctrl.moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td></tr>
+                </table>
+            </div>
+            <div class="two columns" id="markers">
+                <div ng-class="{activeMarker: ($index + 1 === activeMarkerNumber)}" class="marker" ng-repeat="marker in session.markers" ng-click="ctrl.seek($index + 1)">
+                    <span title="{{'SEEK_TO_MARKER'|xlate}}" class="keyStroke">{{ $index > 9 ? '' : $index == 9 ? 0 : $index + 1 }}</span><span ng-class="{hidden:$index>9}">-</span>&nbsp;<span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span><span title="{{'DELETE_MARKER'|xlate}}" class="deleteMarkerButton icon-minus" ng-click="ctrl.deleteMarker($index)"></span>
+                </div>
+            </div>
+            <div class="six columns">
+                <div id="playerContainer" style="width:400px;height:270px">
+                    <youtube-video id="player" player-width="400" player-height="270" video-url="session.videoUrl" player="mppPlayer"></youtube-video>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="twelvea columnas" id="sessionDialog" title="">
             <form>
                 <fieldset>
                     <input autofocus placeholder="{{'NAME'|xlate}}" ng-model="editingSession.name" type="text" class="text ui-widget-content">

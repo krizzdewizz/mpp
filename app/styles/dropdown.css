@@ -2,7 +2,6 @@
 dropdown {
   float: left;
   display: block;
-  width: 318px;
 }
 dropdown > div {
   float: left;
@@ -13,13 +12,13 @@ dropdown > div > div.dropdown-display {
   width: 100%;
   background: white;
   cursor: pointer;
-  border: solid 1px #dddddd;
   box-sizing: border-box;
+  overflow:hidden;
 }
 dropdown > div > div.dropdown-display > * {
   float: left;
   height: 100%;
-  line-height: 40px !important;
+  line-height: 36px !important;
   display: inline-block;
   vertical-align: middle;
 }
@@ -44,6 +43,7 @@ dropdown > div > div.dropdown-display > i {
 dropdown > div > div.dropdown-list {
   float: left;
   position: relative;
+  top:1px;
   width: 100%;
   transform: scale(1, 0);
   transition: transform ease 100ms;

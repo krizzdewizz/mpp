@@ -54,9 +54,7 @@
                     $timeout.cancel(autoFocus);
                     autoFocus = undefined;
                 }
-                $('#keyStrokes').removeClass('keysDisabled');
             }).bind('blur', e=> {
-                $('#keyStrokes').addClass('keysDisabled');
                 if (autoFocus) {
                     $timeout.cancel(autoFocus);
                 }
