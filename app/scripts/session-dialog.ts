@@ -43,7 +43,7 @@ module mpp.dialog.session {
                 buttons: this.createJQButtons([addButton])
             });
 
-            this.dlg.find("form").on("submit", event => {
+            this.dlg.find('form').on('submit', event => {
                 event.preventDefault();
                 if (self.isValid()) {
                     addButton.onClick();
@@ -70,18 +70,21 @@ module mpp.dialog.session {
         }
 
         private createJQButtons(buttons: Button[]): any {
-            var all = {};
             var self = this;
-            buttons.forEach(it => {
-                all[it.label] = () => {
-                    if (self.isValid()) {
-                        it.onClick();
-                        self.close();
+            var all = buttons.map((it, i) => {
+                return {
+                    text: it.label,
+                    'class': i === 0 ? 'button-primary' : undefined,
+                    click: () => {
+                        if (self.isValid()) {
+                            it.onClick();
+                            self.close();
+                        }
                     }
                 };
             });
 
-            all[mpp.filter.xlate.filter('CANCEL')] = () => self.close();
+            all.push({ text: mpp.filter.xlate.filter('CANCEL'), click: () => self.close(), 'class': undefined });
 
             return all;
         }

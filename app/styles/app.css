@@ -1,10 +1,13 @@
 body {
     padding-top: 3em;
-    overflow-y:hidden;
+    overflow-y: hidden;
 }
 
 td {
     white-space: nowrap;
+    padding-right: 10px;
+    font-size: smaller;
+    padding: 5px;
 }
 
 #main {
@@ -38,8 +41,8 @@ td {
     padding-left: 2px;
     padding-right: 2px;
     min-width: 30em;
-    max-width:60em;
-    font-size:larger;
+    max-width: 60em;
+    font-size: larger;
 }
 
 /* keys */
@@ -49,11 +52,6 @@ td {
     cursor: pointer;
 }
 
-#keyStrokes td {
-    padding-right: 10px;
-    font-size: smaller;
-}
-
 /* markers */
 
 .marker {
@@ -61,11 +59,13 @@ td {
     padding: 2px;
     border-radius: 4px;
     border: 1px solid transparent;
-    white-space:nowrap;
+    white-space: nowrap;
 }
-.marker:hover {
-    border: 1px solid #d0d0d0;
-}
+
+    .marker:hover {
+        border: 1px solid #d0d0d0;
+    }
+
 .deleteMarkerButton {
     position: relative;
     top: 4px;
@@ -104,26 +104,27 @@ td {
 }
 
 #sessionDialog fieldset {
-    padding-top:1em;
+    padding-top: 1em;
 }
-#sessionDialog fieldset input {
-    width:100%;
-    margin-left:7px;
-}
+
+    #sessionDialog fieldset input {
+        width: 100%;
+        margin-left: 7px;
+    }
 
 .ui-dialog-titlebar {
     padding: 5px;
-    letter-spacing:.1rem;
-    font-weight:600;
+    letter-spacing: .1rem;
+    font-weight: 600;
 }
 
 .ui-dialog {
     background-color: white;
     border: 1px solid gray;
     border-radius: 4px;
--webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
--moz-box-shadow:    1px 1px 5px 0px rgba(50, 50, 50, 0.75);
-box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.75);
 }
 
 .ui-dialog-buttonset {
@@ -146,8 +147,6 @@ box-shadow:         1px 1px 5px 0px rgba(50, 50, 50, 0.75);
     display: none;
 }
 
-
-
 /* skeleton overrides */
 .button,
 button,
@@ -157,4 +156,11 @@ input[type="button"] {
     text-transform: initial;
     text-align: initial;
 }
+
+button[disabled] {
+    color: #d0d0d0;
+    background-color: white;
+    border-color: gray;
+}
+
 /* skeleton overrides */

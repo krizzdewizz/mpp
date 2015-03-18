@@ -52,13 +52,13 @@
 
             <div class="four columns" id="keyStrokes">
                 <table>
-                    <tr><td><span class="keyStroke" ng-click="ctrl.playPause()">{{'SPACE'|xlate}}</span></td><td>{{'PLAY_PAUSE'|xlate}}</td></tr>
-                    <tr><td><span class="keyStroke" ng-click="ctrl.seekToStart()">{{'RETURN'|xlate}}</span></td><td>{{'SEEK_TO_START'|xlate}}</td></tr>
-                    <tr><td><span class="keyStroke" ng-click="ctrl.backwardForward(true)">←&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.backwardForward(false)">&nbsp;→&nbsp;</span></td><td>{{'BACKWARD_FORWARD'|xlate}}</td></tr>
-                    <tr><td><span class="keyStroke" ng-click="ctrl.addMarker()">m</span></td><td>{{'ADD_MARKER'|xlate}}</td></tr>
-                    <tr><td><span class="keyStroke" style="cursor:inherit">1-0</span></td><td>{{'SEEK_TO_MARKER'|xlate}}</td></tr>
-                    <tr><td><span class="keyStroke" ng-click="ctrl.seekToActiveMarker()">{{'BACKSPACE'|xlate}}</span></td><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td></tr>
-                    <tr><td><span class="keyStroke" ng-click="ctrl.moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td></tr>
+                    <tr><td>{{'PLAY_PAUSE'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.playPause()">{{'SPACE'|xlate}}</span></td></tr>
+                    <tr><td>{{'SEEK_TO_START'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.seekToStart()">{{'RETURN'|xlate}}</span></td></tr>
+                    <tr><td>{{'BACKWARD_FORWARD'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.backwardForward(true)">←&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.backwardForward(false)">&nbsp;→&nbsp;</span></td></tr>
+                    <tr><td>{{'ADD_MARKER'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.addMarker()">m</span></td></tr>
+                    <tr><td>{{'SEEK_TO_MARKER'|xlate}}</td><td><span class="keyStroke" style="cursor:inherit">1-0</span></td></tr>
+                    <tr><td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.seekToActiveMarker()">{{'BACKSPACE'|xlate}}</span></td></tr>
+                    <tr><td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="keyStroke" ng-click="ctrl.moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td></tr>
                 </table>
             </div>
             <div class="two columns" id="markers">
