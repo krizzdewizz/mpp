@@ -36,7 +36,6 @@
   <ItemGroup>
     <Content Include="app\images\sprites.png" />
     <Content Include="app\index.html" />
-    <Content Include="app\partials\dropdown.html" />
     <Content Include="app\styles\app.css" />
     <Content Include="app\styles\dropdown.css" />
     <Content Include="app\styles\skeleton\normalize.css" />
@@ -59,7 +58,6 @@
   <ItemGroup>
     <Folder Include="app\" />
     <Folder Include="app\images\" />
-    <Folder Include="app\partials\" />
     <Folder Include="app\scripts\" />
     <Folder Include="app\scripts\typings\" />
     <Folder Include="app\styles\" />

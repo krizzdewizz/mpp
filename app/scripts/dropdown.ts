@@ -2,6 +2,23 @@
 
     // https://www.codementor.io/angularjs/tutorial/create-dropdown-control
 
+    var TEMPLATE = '<div class="dropdown-container" ng-class="{ show: listVisible }">' +
+        '    <div class="dropdown-display" ng-click="show();" ng-class="{ clicked: listVisible }">' +
+        '        <span ng-if="!isPlaceholder">{{selected[property]}}</span>' +
+        '        <span class="placeholder" ng-if="isPlaceholder">' +
+        '            {{placeholder}}</span>' +
+        '            <i class="angleDown">▼</i>' +
+        '    </div>' +
+        '    <div class="dropdown-list">' +
+        '        <div>' +
+        '            <div ng-repeat="item in list" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">' +
+        '                <span>{{property !== undefined ? item[property] : item}}</span>' +
+        '                <i class="fa fa-check"></i>' +
+        '            </div>' +
+        '        </div>' +
+        '    </div>' +
+        '</div>';
+
     export function register(app: ng.IModule): void {
 
         app.run($rootScope=> {
@@ -13,7 +30,7 @@
         app.directive("dropdown", function ($rootScope) {
             return {
                 restrict: "E",
-                templateUrl: "partials/dropdown.html",
+                template: TEMPLATE,
                 scope: {
                     placeholder: "@",
                     list: "=",
