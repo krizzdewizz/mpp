@@ -49,7 +49,6 @@
         </div>
 
         <div id="contentRow" class="row">
-
             <div class="four columns" id="keyStrokes">
                 <table>
                     <tr><td>{{'PLAY_PAUSE'|xlate}}</td><td><span class="keyStroke" ng-click="ctrl.playPause()">{{'SPACE'|xlate}}</span></td></tr>
@@ -71,10 +70,19 @@
                     <youtube-video id="player" player-width="400" player-height="270" video-url="session.videoUrl" player="mppPlayer"></youtube-video>
                 </div>
             </div>
-
         </div>
 
-        <div class="twelvea columnas" id="sessionDialog" title="">
+        <div class="row">
+            <div class="two columns">
+                <div id="links">
+                    <a ng-if="session.lyricsUrl" href="{{session.lyricsUrl}}" target="_blank">{{'LYRICS'|xlate}}</a>
+                    <a ng-if="session.tabsUrl" href="{{session.tabsUrl}} target=" _blank">{{'TABS'|xlate}}</a>
+                    <a ng-repeat="link in links" href="{{link.url}}" target="_blank">{{link.title}}</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="sessionDialog" title="">
             <form>
                 <fieldset>
                     <input autofocus placeholder="{{'NAME'|xlate}}" ng-model="editingSession.name" type="text" class="text ui-widget-content">

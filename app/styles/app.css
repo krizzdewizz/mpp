@@ -16,6 +16,7 @@ td {
 
 #playerContainer {
     border: solid 1px #dddddd;
+    float:right;
 }
 
 #contentRow {
@@ -43,6 +44,12 @@ td {
     min-width: 30em;
     max-width: 60em;
     font-size: larger;
+}
+
+/* links */
+
+#links a {
+    display:block;
 }
 
 /* keys */
@@ -105,6 +112,7 @@ td {
 
 #sessionDialog fieldset {
     padding-top: 1em;
+    border:none;
 }
 
     #sessionDialog fieldset input {
