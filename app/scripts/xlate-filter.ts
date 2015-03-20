@@ -23,14 +23,14 @@
         CANCEL: 'cancel',
         NAME: 'name',
         YT_URL: 'YouTube video url',
-        SEARCH_YT: 'search on YouTube',
         SESSION: 'session',
         LYRICS_URL: 'lyrics url',
         TABS_URL: 'tabs url',
         LYRICS: 'lyrics',
         TABS: 'tabs',
         MORE_LINKS: 'more links',
-        SEARCH: 'search'
+        SEARCH: 'search',
+        URL_FORMAT: 'format: [title1=]url1[MPP[title2=]url2]...'
     };
 
     var GERMAN = {
@@ -53,15 +53,15 @@
         OK: 'ok',
         CANCEL: 'abbrechen',
         NAME: 'name',
-        YT_URL: 'youtube video url',
-        SEARCH_YT: 'auf youtube suchen',
+        YT_URL: 'YouTube video url',
         SESSION: 'session',
         LYRICS_URL: 'liedtext url',
         TABS_URL: 'noten url',
         LYRICS: 'liedtext',
         TABS: 'noten',
         MORE_LINKS: 'mehr links',
-        SEARCH:'suchen'
+        SEARCH: 'suchen',
+        URL_FORMAT: 'format: [titel1=]url1[MPP[titel2=]url2]...'
     };
 
     // end data

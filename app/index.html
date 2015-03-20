@@ -70,7 +70,7 @@
             </div>
             <div class="six columns">
                 <div id="playerContainer" style="width:400px;height:270px">
-                    <youtube-video ng-if="session" id=" player" player-width="400" player-height="270" video-url="session.videoUrl" player="mppPlayer"></youtube-video>
+                    <youtube-video id=" player" player-width="400" player-height="270" video-url="session.videoUrl" player="mppPlayer"></youtube-video>
                 </div>
             </div>
         </div>
@@ -100,7 +100,7 @@
                     <a title="{{'SEARCH'|xlate}}" ng-click="ctrl.onGoto('sessionDialogChordsUrl')" ng-if="ctrl.sessionDialogSearchUrl" class="goto" target="_blank" href="{{ctrl.sessionDialogSearchUrl}}+chords">→</a>
                     <br>
                     <input placeholder="{{'MORE_LINKS'|xlate}}" ng-model="editingSession.links" type="text" class="text ui-widget-content">
-                    <span style="font-size:small;float:right">format: [title1=]url1[MPP[title2=]url2]...</span>
+                    <span style="font-size:small;float:right">{{'URL_FORMAT'|xlate}}</span>
                     <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
                 </fieldset>
             </form>
