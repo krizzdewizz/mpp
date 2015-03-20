@@ -29,7 +29,8 @@
         TABS_URL: 'tabs url',
         LYRICS: 'lyrics',
         TABS: 'tabs',
-        MORE_LINKS: 'more links'
+        MORE_LINKS: 'more links',
+        SEARCH: 'search'
     };
 
     var GERMAN = {
@@ -59,7 +60,8 @@
         TABS_URL: 'noten url',
         LYRICS: 'liedtext',
         TABS: 'noten',
-        MORE_LINKS:'mehr links'
+        MORE_LINKS: 'mehr links',
+        SEARCH:'suchen'
     };
 
     // end data

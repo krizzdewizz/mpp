@@ -91,13 +91,13 @@
                     <input autofocus placeholder="{{'NAME'|xlate}}" ng-model="editingSession.name" type="text" class="text ui-widget-content">
                     <br>
                     <input style="width:90%" placeholder="{{'YT_URL'|xlate}}" id="sessionDialogVideoUrl" ng-model="editingSession.videoUrl" type="text" class="text ui-widget-content">
-                    <a ng-click="ctrl.onGoto('sessionDialogVideoUrl')" class="goto" target="_blank" href="https://www.youtube.com">→</a>
+                    <a title="{{'SEARCH'|xlate}}" ng-click="ctrl.onGoto('sessionDialogVideoUrl')" class="goto" target="_blank" href="https://www.youtube.com">→</a>
                     <br>
                     <input style="width:90%" placeholder="{{'LYRICS_URL'|xlate}}" id="sessionDialogLyricsUrl" ng-model="editingSession.lyricsUrl" type="text" class="text ui-widget-content">
-                    <a ng-click="ctrl.onGoto('sessionDialogLyricsUrl')" ng-if="ctrl.sessionDialogSearchUrl" class="goto" target="_blank" href="{{ctrl.sessionDialogSearchUrl}}+lyrics">→</a>
+                    <a title="{{'SEARCH'|xlate}}" ng-click="ctrl.onGoto('sessionDialogLyricsUrl')" ng-if="ctrl.sessionDialogSearchUrl" class="goto" target="_blank" href="{{ctrl.sessionDialogSearchUrl}}+lyrics">→</a>
                     <br>
                     <input style="width:90%" placeholder="{{'TABS_URL'|xlate}}" id="sessionDialogChordsUrl" ng-model="editingSession.tabsUrl" type="text" class="text ui-widget-content">
-                    <a ng-click="ctrl.onGoto('sessionDialogChordsUrl')" ng-if="ctrl.sessionDialogSearchUrl" class="goto" target="_blank" href="{{ctrl.sessionDialogSearchUrl}}+chords">→</a>
+                    <a title="{{'SEARCH'|xlate}}" ng-click="ctrl.onGoto('sessionDialogChordsUrl')" ng-if="ctrl.sessionDialogSearchUrl" class="goto" target="_blank" href="{{ctrl.sessionDialogSearchUrl}}+chords">→</a>
                     <br>
                     <input placeholder="{{'MORE_LINKS'|xlate}}" ng-model="editingSession.links" type="text" class="text ui-widget-content">
                     <span style="font-size:small;float:right">format: [title1=]url1[MPP[title2=]url2]...</span>
