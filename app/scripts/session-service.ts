@@ -3,13 +3,6 @@
     var SESSIONS_KEY = 'sessions';
     var LAST_SESSION_INDEX = 'lastSessionIndex';
 
-    var DEFAULT_SESSION = {
-        name: filter.xlate.filter('ADD_SESSION_MORE'),
-        videoUrl: '',
-        markers: [],
-        isPlaceholder: true
-    };
-
     function clearArray(a: any[]) {
         while (a.length) {
             a.pop();
@@ -31,7 +24,7 @@
             if (this.sessions && this.sessions.length > 0) {
                 this.sessions = this.sessions.sort(sessionSorter);
             } else {
-                this.sessions = [DEFAULT_SESSION];
+                this.sessions = [];
             }
 
             this.sessions = debugSessions(this.sessions);
@@ -42,12 +35,11 @@
         }
 
         add(session: Session): void {
-
-            var n = this.sessions.filter(it => !it.isPlaceholder);
-            n.push(session);
-            n = n.sort(sessionSorter);
+            var copy = this.sessions.slice(0);
+            copy.push(session);
+            copy = copy.sort(sessionSorter);
             clearArray(this.sessions);
-            n.forEach(it => this.sessions.push(it));
+            copy.forEach(it => this.sessions.push(it));
             this.saveSessions();
         }
 
@@ -61,16 +53,7 @@
             n.forEach(it => this.sessions.push(it));
 
             this.saveSessions();
-
-            if (this.sessions.length === 0) {
-                this.sessions.push(DEFAULT_SESSION);
-                return DEFAULT_SESSION;
-            }
-
-            if (idx >= 0) {
-                return this.sessions[idx];
-            }
-            return undefined;
+            return this.sessions[idx];
         }
 
         setSessionSelected(sess: Session) {
@@ -88,6 +71,7 @@
 
     // for debugging
     function debugSessions(s) {
+        //return [];
         return s;
         //return [{
         //    name: 'Queensryche',

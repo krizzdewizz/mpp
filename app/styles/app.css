@@ -10,13 +10,19 @@ td {
     padding: 5px;
 }
 
+.goto {
+    padding-left: 10px;
+    text-decoration: none;
+    font-size: large;
+}
+
 #main {
     outline: 0;
 }
 
 #playerContainer {
     border: solid 1px #dddddd;
-    float:right;
+    float: right;
 }
 
 #contentRow {
@@ -49,7 +55,7 @@ td {
 /* links */
 
 #links a {
-    display:block;
+    display: block;
 }
 
 /* keys */
@@ -110,15 +116,16 @@ td {
     padding-right: 14px;
 }
 
-#sessionDialog fieldset {
-    padding-top: 1em;
-    border:none;
-}
-
-    #sessionDialog fieldset input {
-        width: 100%;
-        margin-left: 7px;
+    #sessionDialog fieldset {
+        padding-top: 1em;
+        border: none;
     }
+
+        #sessionDialog fieldset input {
+            width: 100%;
+            margin-left: 7px;
+        }
+
 
 .ui-dialog-titlebar {
     padding: 5px;
@@ -165,10 +172,10 @@ input[type="button"] {
     text-align: initial;
 }
 
-button[disabled] {
-    color: #d0d0d0;
-    background-color: white;
-    border-color: gray;
-}
+    button[disabled], button[disabled]:hover {
+        color: #d0d0d0;
+        background-color: white;
+        border-color: gray;
+    }
 
 /* skeleton overrides */

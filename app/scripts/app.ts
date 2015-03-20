@@ -28,7 +28,6 @@ module mpp {
         tabsUrl?: string;
         links?: string;
         markers: number[];
-        isPlaceholder?: boolean;
     }
 
     var mppApp = angular.module('mppApp', [

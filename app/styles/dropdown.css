@@ -30,9 +30,7 @@ dropdown > div > div.dropdown-display > span {
   padding-left: 10px;
   white-space:nowrap;
 }
-dropdown > div > div.dropdown-display > span.placeholder {
-  color: #aaaaaa;
-}
+
 dropdown > div > div.dropdown-display > i {
   position: relative;
   width: 14px;

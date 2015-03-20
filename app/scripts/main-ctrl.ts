@@ -189,7 +189,7 @@
 
         editSession(): void {
 
-            if (this.scope.session.isPlaceholder) {
+            if (this.scope.sessions.length === 0) {
                 this.addSession();
                 return;
             }
@@ -222,6 +222,17 @@
             if (keys.handle(this, e)) {
                 e.preventDefault();
             }
+        }
+
+        get sessionDialogSearchUrl(): string {
+            if (this.scope.editingSession && this.scope.editingSession.name) {
+                return 'https://www.google.com/search?q=' + encodeURIComponent(this.scope.editingSession.name.trim());
+            }
+            return undefined;
+        }
+
+        onGoto(id: string): void {
+            $('#' + id).focus();
         }
     }
 
