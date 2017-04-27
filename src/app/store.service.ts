@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core'
 import { Mpp } from './model'
-import { TEST_TRACKS } from './test-tracks'
+// import { TEST_TRACKS } from './test-tracks'
 
 const MPP = 'mpp'
 
 const DEFAULT: Mpp = {
-  tracks: TEST_TRACKS
+  // tracks: TEST_TRACKS
+  tracks: []
 }
 
 @Injectable()
