@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable'
 import { Track } from './model'
 import { TracksService } from 'app/tracks.service'
 
-
 @Injectable()
 export class ModalService {
     trackModal: ModalComponent
