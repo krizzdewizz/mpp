@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
-import { ModalService } from 'app/modal.service'
-import { TracksService } from 'app/tracks.service'
+import { ModalService } from '../modal.service'
+import { TracksService } from '../tracks.service'
 
 @Component({
   selector: 'mpp-action-bar',

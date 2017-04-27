@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core'
 import { PlayerService } from '../player.service'
-import { TracksService } from 'app/tracks.service'
-import { ModalService } from 'app/modal.service'
+import { TracksService } from '../tracks.service'
+import { ModalService } from '../modal.service'
 
 @Component({
   selector: 'mpp-keys',

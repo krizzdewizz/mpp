@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Track } from './model'
 import { StoreService } from './store.service'
-import { MarkerPipe } from 'app/marker.pipe'
-import { PlayerService, incrTime } from 'app/player.service'
+import { MarkerPipe } from './marker.pipe'
+import { PlayerService, incrTime } from './player.service'
 
 @Injectable()
 export class TracksService {

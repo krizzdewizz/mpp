@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { TracksService } from '../tracks.service'
 import { Track } from '../model'
-import { ModalService } from 'app/modal.service'
+import { ModalService } from '../modal.service'
 
 @Component({
   selector: 'mpp-tracks-dropdown',

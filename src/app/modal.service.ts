@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal'
 import { Observable } from 'rxjs/Observable'
 import { Track } from './model'
-import { TracksService } from 'app/tracks.service'
+import { TracksService } from './tracks.service'
 
 @Injectable()
 export class ModalService {
