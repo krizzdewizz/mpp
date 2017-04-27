@@ -68,13 +68,65 @@ const GERMAN = {
 
 // end data
 
+const FALLBACK_LANG = 'en'
+const SUPPORTED_LANGS = {
+  en: DEFAULT,
+  de: GERMAN
+}
+let cachedLang: string
+
+function getLang(): string {
+
+  if (cachedLang) {
+    return cachedLang
+  }
+
+  let lang: string
+  const nav = <NavigatorExt>window.navigator
+
+  if (nav.languages) {
+    lang = firstSupported(nav.languages)
+  }
+
+  if (!lang) {
+    lang = firstSupported([nav.userLanguage || nav.language])
+  }
+  if (!lang) {
+    lang = FALLBACK_LANG
+  }
+  cachedLang = lang
+  return lang
+}
+
+function firstSupported(languages: string[]): string {
+  let first: string
+  const n = languages.length
+  for (let i = 0; i < n && !first; i++) {
+    first = isSupported(languages[i])
+  }
+  return first
+}
+
+function isSupported(lang: string): string {
+  const langKey = lang.toLowerCase().substr(0, 2)
+  return SUPPORTED_LANGS[langKey] ? langKey : undefined
+}
+
+interface NavigatorExt extends Navigator {
+  languages?: string[]
+  userLanguage: string
+  browserLanguage: string
+  systemLanguage: string
+}
 
 @Pipe({
   name: 'xlate'
 })
 export class XlatePipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return GERMAN[value]
+  transform(k: any, args?: any): any {
+    const lcl = SUPPORTED_LANGS[getLang()]
+    return lcl[k] || DEFAULT[k] || k
+    //return lcl[k] || k;
   }
 }

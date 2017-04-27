@@ -7,11 +7,12 @@ button {
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        flex: 1;
     }
 
     & > .caret {
-        float: right;
         margin-top: 10px;
+        font-size: 22px;
     }
 }
 
