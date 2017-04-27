@@ -1,0 +1,34 @@
+mpp-yt-player {
+    width: 450px;
+    height: 300px;
+}
+
+.top-container {
+    display: flex;
+}
+
+.bottom-container {
+    display: flex;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+mpp-markers {
+    width: 120px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.mpp-root {
+    outline: none;
+}
+
+mpp-action-bar {
+    margin-left: 5px;
+}
+
+.track-form {
+    input {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,8 @@
+button > span {
+    position: relative;
+    top: 3px;
+
+    &.icon-add {
+        left: 1px;
+    }
+}

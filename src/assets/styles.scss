@@ -1,0 +1,35 @@
+@function font-url($s, $q) {
+    @return "../../node_modules/bootstrap-sass/assets/fonts/" + $s;
+}
+
+$font-size-base:          18px !default;
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap-compass";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+
+@import "_icons";
+
+body {
+    padding: 50px;
+}
+
+.key-stroke {
+    color: blue;
+    cursor: pointer;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.mpp-modal-footer {
+    display: flex;
+    padding-top: 10px;
+    &>button {
+        margin-left: auto;
+    }
+}
+
+.dropdown-menu {
+    width: 100%;
+}

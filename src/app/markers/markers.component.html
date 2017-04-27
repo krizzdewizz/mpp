@@ -1,0 +1,8 @@
+<div class="markers" *ngIf="track">
+  <div [class.active]="index + 1 === activeMarkerNumber" class="marker" *ngFor="let marker of track.markers; let index = index"
+    (click)="seek(index + 1)">
+    <span title="{{'SEEK_TO_MARKER'|xlate}}" class="key-stroke">{{ index > 9 ? '' : index == 9 ? 0 : index + 1 }}</span>
+    <span [class.hidden]="index>9">-</span>&nbsp;<span title="{{'SEEK_TO_MARKER'|xlate}}">{{marker | marker}}</span>
+    <span title="{{'DELETE_MARKER'|xlate}}" class="delete-button icon-minus" (click)="deleteMarker(index)"></span>
+  </div>
+</div>

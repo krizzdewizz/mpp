@@ -1,0 +1,9 @@
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" (click)="onClick()">
+    {{selection ? selection.name : ((tracks?.length ? 'SELECT_TRACK' : 'ADD_TRACK_MORE')|xlate)}}
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li *ngFor="let track of tracks" [class.active]="selection === track"><a href="#" (click)="select(track)">{{track.name}}</a></li>
+  </ul>
+</div>

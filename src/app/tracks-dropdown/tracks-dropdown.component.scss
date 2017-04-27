@@ -1,0 +1,9 @@
+button {
+    width: 300px;
+    text-align: left;
+
+    & > .caret {
+        float: right;
+        margin-top: 10px;
+    }
+}

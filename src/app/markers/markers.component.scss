@@ -1,0 +1,41 @@
+.marker {
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    font-size: smaller;
+
+    &:hover {
+        border: 1px solid #d0d0d0;
+
+        & .delete-button {
+            visibility: visible;
+        }
+    }
+
+    &.active {
+        background-color: lightblue;
+    }
+
+    & .delete-button {
+        position: relative;
+        top: 2px;
+        cursor: pointer;
+        visibility: hidden;
+    }
+
+    span {
+        display: inline-block;
+
+        &:nth-child(1) {
+            width: 15px;
+        }
+
+        &:nth-child(3) {
+            width: 60px;
+        }
+    }
+}
+
+

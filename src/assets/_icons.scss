@@ -1,0 +1,14 @@
+.icon-minus {
+    @extend .glyphicon;
+    @extend .glyphicon-minus;
+}
+
+.icon-add {
+    @extend .glyphicon;
+    @extend .glyphicon-plus;
+}
+
+.icon-edit {
+    @extend .glyphicon;
+    @extend .glyphicon-edit;
+}

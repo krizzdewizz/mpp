@@ -1,0 +1,26 @@
+<div class="mpp-root" tabindex="1" #focus>
+  <div class="top-container">
+    <mpp-tracks-dropdown></mpp-tracks-dropdown>
+    <mpp-action-bar></mpp-action-bar>
+  </div>
+  <div class="bottom-container">
+    <mpp-keys></mpp-keys>
+    <mpp-markers></mpp-markers>
+    <mpp-yt-player></mpp-yt-player>
+  </div>
+</div>
+
+<modal #trackModal>
+  <ng-template [ngIf]="isModalOpen(trackModal)">
+    <modal-header [show-close]="true">{{(trackModal.$data.add ? 'ADD_TRACK' : 'EDIT_TRACK') | xlate}}</modal-header>
+    <modal-body>
+      <form class="track-form" (ngSubmit)="trackModal.$data.onSave()">
+        <input id="task-modal-name" name="task-modal-name" [(ngModel)]="trackModal.$data.track.name" class="form-control" [placeholder]="'NAME' | xlate">
+        <input name="task-modal-video-url" [(ngModel)]="trackModal.$data.track.videoUrl" class="form-control" [placeholder]="'YT_URL' | xlate">
+        <div class="mpp-modal-footer">
+          <button class="btn btn-primary" [disabled]="!trackModal.$data.isValid()">{{(trackModal.$data.add ? 'ADD' : 'OK') | xlate}}</button>
+        </div>
+      </form>
+    </modal-body>
+  </ng-template>
+</modal>
