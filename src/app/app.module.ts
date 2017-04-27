@@ -16,6 +16,8 @@ import { PlayerService } from './player.service'
 import { MarkerPipe } from './marker.pipe'
 import { ActionBarComponent } from './action-bar/action-bar.component'
 import { ModalService } from './modal.service'
+import { APP_BASE_HREF } from '@angular/common'
+import { environment } from 'environments/environment'
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ModalService } from './modal.service'
     FormsModule,
     HttpModule, Ng2Bs3ModalModule
   ],
-  providers: [TracksService, StoreService, PlayerService, MarkerPipe, ModalService],
+  providers: [TracksService, StoreService, PlayerService, MarkerPipe, ModalService,
+    { provide: APP_BASE_HREF, useValue: environment.baseHref },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
