@@ -1,9 +1,21 @@
 button {
-    width: 300px;
+    width: 350px;
     text-align: left;
+    display: flex;
+
+    & > .track-name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 
     & > .caret {
         float: right;
         margin-top: 10px;
     }
+}
+
+.dropdown-menu > li > a {
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

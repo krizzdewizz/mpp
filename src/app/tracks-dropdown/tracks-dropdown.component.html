@@ -1,6 +1,6 @@
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" (click)="onClick()">
-    {{selection ? selection.name : ((tracks?.length ? 'SELECT_TRACK' : 'ADD_TRACK_MORE')|xlate)}}
+    <span class="track-name">{{selection ? selection.name : ((tracks?.length ? 'SELECT_TRACK' : 'ADD_TRACK_MORE')|xlate)}}</span>
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu">
