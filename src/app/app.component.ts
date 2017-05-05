@@ -32,4 +32,9 @@ export class AppComponent implements OnInit {
   isModalOpen(modal: ModalComponent): boolean {
     return this.modalService.isModalOpen(modal)
   }
+
+  gotoYt(focusEl: ElementRef) {
+    window.open('http://www.youtube.com', '_blank')
+    document.getElementById('track-modal-video-url').focus()
+  }
 }

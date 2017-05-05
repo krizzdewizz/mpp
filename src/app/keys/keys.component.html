@@ -1,30 +1,26 @@
 <table class="table">
-  <tr>
+  <tr (click)="playPause()">
     <td>{{'PLAY_PAUSE'|xlate}}</td>
-    <td><span class="key-stroke" (click)="playPause()">{{'SPACE'|xlate}}</span></td>
+    <td><span class="key-stroke">{{'SPACE'|xlate}}</span></td>
   </tr>
-  <tr>
+  <tr (click)="seekToStart()">
     <td>{{'SEEK_TO_START'|xlate}}</td>
-    <td><span class="key-stroke" (click)="seekToStart()">{{'RETURN'|xlate}}</span></td>
+    <td><span class="key-stroke">{{'RETURN'|xlate}}</span></td>
   </tr>
   <tr>
-    <td>{{'BACKWARD_FORWARD'|xlate}}</td>
-    <td><span class="key-stroke" (click)="backwardForward(true)">←&nbsp;</span>&nbsp;<span class="key-stroke" (click)="backwardForward(false)">&nbsp;→&nbsp;</span></td>
+    <td class="key-arrow" (touchend)="onBackForwardTouch(false, true)" (touchstart)="onBackForwardTouch(true, true)" (click)="backwardForward(true)"><span class="key-stroke">←&nbsp;</span> {{'BACKWARD'|xlate}}</td>
+    <td class="key-arrow" (touchend)="onBackForwardTouch(false, false)" (touchstart)="onBackForwardTouch(true, false)" (click)="backwardForward(false)">{{'FORWARD'|xlate}} <span class="key-stroke">&nbsp;→&nbsp;</span></td>
   </tr>
-  <tr>
+  <tr (click)="addMarker()">
     <td>{{'ADD_MARKER'|xlate}}</td>
-    <td><span class="key-stroke" (click)="addMarker()">m</span></td>
+    <td><span class="key-stroke">m</span></td>
   </tr>
-  <tr>
-    <td>{{'SEEK_TO_MARKER'|xlate}}</td>
-    <td><span class="key-stroke" style="cursor:inherit">1-0</span></td>
-  </tr>
-  <tr>
+  <tr (click)="seekToActiveMarker()">
     <td>{{'SEEK_TO_ACTIVE_MARKER'|xlate}}</td>
-    <td><span class="key-stroke" (click)="seekToActiveMarker()">{{'BACKSPACE'|xlate}}</span></td>
+    <td><span class="key-stroke">{{'BACKSPACE'|xlate}}</span></td>
   </tr>
   <tr>
     <td>{{'MOVE_ACTIVE_MARKER'|xlate}}</td>
-    <td><span class="key-stroke" (click)="moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="key-stroke" (click)="moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td>
+    <td class="key-arrow"><span class="key-stroke" (click)="moveActiveMarker(true)">↑&nbsp;</span>&nbsp;<span class="key-stroke" (click)="moveActiveMarker(false)">&nbsp;↓&nbsp;</span></td>
   </tr>
 </table>

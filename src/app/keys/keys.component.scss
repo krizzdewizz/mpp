@@ -1,4 +1,12 @@
 .table {
-    font-size: smaller;
+    margin-top: 20px;
+    margin-bottom: 0px;
+
+    tr {
+        cursor: pointer;
+    }
+}
+
+.key-arrow {
     white-space: nowrap;
 }

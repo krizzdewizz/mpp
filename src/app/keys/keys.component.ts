@@ -10,6 +10,8 @@ import { ModalService } from '../modal.service'
 })
 export class KeysComponent {
 
+  private backwardForwardInterval
+
   constructor(private tracksService: TracksService, private playerService: PlayerService, private modalService: ModalService) { }
 
   @HostListener('document:keydown', ['$event'])
@@ -79,5 +81,13 @@ export class KeysComponent {
 
   get ready() {
     return this.playerService.ready
+  }
+
+  onBackForwardTouch(start: boolean, backward: boolean) {
+    clearInterval(this.backwardForwardInterval)
+    if (start) {
+      this.backwardForwardInterval = setInterval(() => this.backwardForward(backward), 300)
+    }
+    return false
   }
 }

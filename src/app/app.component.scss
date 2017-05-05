@@ -1,22 +1,11 @@
 mpp-yt-player {
-    width: 450px;
-    height: 300px;
+    iframe {
+        width: 15%;
+    }
 }
 
 .top-container {
     display: flex;
-}
-
-.bottom-container {
-    display: flex;
-    margin-top: 50px;
-    margin-right: 50px;
-}
-
-mpp-markers {
-    width: 120px;
-    margin-right: 100px;
-    margin-left: 100px;
 }
 
 .mpp-root {
@@ -24,11 +13,25 @@ mpp-markers {
 }
 
 mpp-action-bar {
-    margin-left: 5px;
+    margin-bottom: 20px;
 }
 
-.track-form {
-    input {
-        margin-bottom: 10px;
+@media (max-width: 400px) {
+  .modal-xs { width: 300px; }
+}
+
+modal-body form .form-control {
+    margin-bottom: 10px;
+}
+
+.track-modal-video-url {
+    position: relative;
+
+    .icon-goto-yt {
+        position: absolute;
+        top: 5px;
+        left: 93%;
+        cursor: pointer;
+        font-size: x-large;
     }
 }

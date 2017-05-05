@@ -1,22 +1,37 @@
-<div class="mpp-root" tabindex="1" #focus>
-  <div class="top-container">
-    <mpp-tracks-dropdown></mpp-tracks-dropdown>
-    <mpp-action-bar></mpp-action-bar>
+<div class="mpp-root container" tabindex="1" #focus>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mpp-tracks-dropdown></mpp-tracks-dropdown>
+    </div>
+    <div class="col-md-6">
+      <mpp-action-bar></mpp-action-bar>
+    </div>
   </div>
-  <div class="bottom-container">
-    <mpp-keys></mpp-keys>
-    <mpp-markers></mpp-markers>
-    <mpp-yt-player></mpp-yt-player>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mpp-keys></mpp-keys>
+    </div>
+    <div class="col-md-6">
+      <mpp-markers></mpp-markers>
+    </div>
   </div>
+
+  <mpp-yt-player></mpp-yt-player>
 </div>
 
 <modal #trackModal>
   <ng-template [ngIf]="isModalOpen(trackModal)">
     <modal-header [show-close]="true">{{(trackModal.$data.add ? 'ADD_TRACK' : 'EDIT_TRACK') | xlate}}</modal-header>
     <modal-body>
-      <form class="track-form" (ngSubmit)="trackModal.$data.onSave()">
-        <input id="task-modal-name" name="task-modal-name" [(ngModel)]="trackModal.$data.track.name" class="form-control" [placeholder]="'NAME' | xlate">
-        <input name="task-modal-video-url" [(ngModel)]="trackModal.$data.track.videoUrl" class="form-control" [placeholder]="'YT_URL' | xlate">
+      <form (ngSubmit)="trackModal.$data.onSave()">
+        <input id="track-modal-name" name="track-modal-name" [(ngModel)]="trackModal.$data.track.name" class="form-control" [placeholder]="'NAME' | xlate">
+        <div class="track-modal-video-url">
+          <input id="track-modal-video-url" name="track-modal-video-url" [(ngModel)]="trackModal.$data.track.videoUrl" class="form-control"
+            [placeholder]="'YT_URL' | xlate">
+          <span class="icon-goto-yt" [title]="'GOTO_YT' | xlate" (click)="gotoYt()">YT</span>
+        </div>
         <div class="mpp-modal-footer">
           <button class="btn btn-primary" [disabled]="!trackModal.$data.isValid()">{{(trackModal.$data.add ? 'ADD' : 'OK') | xlate}}</button>
         </div>

@@ -55,7 +55,7 @@ export class ModalService {
             this.trackModal[`$data`] = data
             this.ifOkToOpen(() => {
                 this.openModal(this.trackModal)
-                setTimeout(() => document.getElementById('task-modal-name').focus(), 500)
+                setTimeout(() => document.getElementById('track-modal-name').focus(), 500)
             })
         })
     }
