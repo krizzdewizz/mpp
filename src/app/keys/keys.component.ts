@@ -85,6 +85,7 @@ export class KeysComponent {
 
   onBackForwardTouch(start: boolean, backward: boolean) {
     clearInterval(this.backwardForwardInterval)
+    this.backwardForward(backward)
     if (start) {
       this.backwardForwardInterval = setInterval(() => this.backwardForward(backward), 300)
     }

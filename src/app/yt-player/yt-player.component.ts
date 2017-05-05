@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { Player } from '../model'
 import { PlayerService } from '../player.service'
 
 @Component({
@@ -7,9 +6,6 @@ import { PlayerService } from '../player.service'
   template: '<div id="mpp-player"></div>'
 })
 export class YtPlayerComponent implements OnInit {
-
-  player: Player
-
   constructor(private playerService: PlayerService) {
   }
 

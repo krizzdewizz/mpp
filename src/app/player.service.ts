@@ -28,6 +28,8 @@ export class PlayerService {
     this.destroy()
     this.player = new YT.Player('mpp-player', {
       videoId: getIdFromURL(url),
+      width: '300',
+      height: '250',
       playerVars: { controls: 1 }
     })
   }
